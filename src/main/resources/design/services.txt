@@ -34,6 +34,15 @@ Recipe management
     Load recipes
     Save recipes
 
+Volume management
+    List all volume names
+    Find volumes
+    Add volume
+    Modify volume
+    Delete volume
+    Load volumes
+    Save volumes
+
 Recipe statistics
     Generate recipe ingredient list
     Generate recipe allergens list

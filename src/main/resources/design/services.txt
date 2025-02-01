@@ -1,0 +1,45 @@
+Source management
+    List all source names
+    Find sources
+    Add source
+    Modify source
+    Delete source
+    Load sources
+    Save sources
+
+Sub-ingredient management
+    List all sub-ingredient names
+    Find sub-ingredient
+    Add sub-ingredient
+    Modify sub-ingredient
+    Delete sub-ingredient
+    Load sub-ingredients
+    Save sub-ingredients
+
+Ingredient management
+    List all ingredient names
+    Find ingredients
+    Add ingredient
+    Modify ingredient
+    Delete ingredient
+    Load ingredients
+    Save ingredients
+
+Recipe management
+    List all recipe names
+    Find recipes
+    Add recipe
+    Modify recipe
+    Delete recipe
+    Load recipes
+    Save recipes
+
+Recipe statistics
+    Generate recipe ingredient list
+    Generate recipe allergens list
+    Generate recipe data sheet
+    Generate net price
+    Generate gross price
+
+Calculators
+?

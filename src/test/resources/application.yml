@@ -1,0 +1,23 @@
+spring:
+
+  application:
+    name: FoodDesigner
+
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:food_designer
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true #default is none on default path /h2-console
+      path: /h2-ui
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        ddl-auto: create-drop
+        format_sql: true
+    show-sql: true

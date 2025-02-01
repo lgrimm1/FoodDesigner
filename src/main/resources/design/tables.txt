@@ -1,0 +1,47 @@
+Source table
+    Source ID                   ID
+    Source name                 text
+    Source webshop              text
+    Source open hours           text
+
+Sub-ingredient table
+    Sub-ingredient ID           ID
+    Sub-ingredient name         text
+    Allergen                    true|false
+
+Ingredient table
+    Ingredient ID               ID
+    Ingredient name             text
+    Sub-ingredient list         [Sub-ingredient ID: ID, ...]
+    Extra allergens note        text
+    Density g/cm3               float
+    Energy kJ/100g              integer
+    Energy kcal/100g            integer
+    Fats total g/100g           float
+    Saturated fats g/100g       float
+    Carbohydrates total g/100g  float
+    Sugars g/100g               float
+    Dietary fiber g/100g        float
+    Proteins g/100g             float
+    Salt g/100g                 float
+    Shop ID                     ID
+    Product name                text
+    Product manufacturer name   text
+    Product description         text
+    Product net weight g        integer
+    Product gross price €       float
+    Product VAT %               float
+
+Recipe table
+    Recipe ID                   ID
+    Recipe name                 text
+    Ingredient list             [(Ingredient ID: ID, Ingredient weight g: integer), ...]
+    Notes                       text
+    Steps                       text
+    Cooling time limit day      integer
+    Freezing time limit month   integer
+
+Volume table
+    Volume ID                   ID
+    Volume name                 text
+    Volume value ml, cm3        integer

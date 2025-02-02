@@ -1,47 +1,44 @@
-Source table
-    Source ID                   ID
-    Source name                 text
-    Source webshop              text
-    Source open hours           text
+TABLE                   COLUMN PURPOSE              COLUMN NAME         TYPE
+----------------------------------------------------------------------------
+Source table            Source ID                   id                  ID
+                        Source name                 name                text
+                        Source webshop              webshop             text
+                        Source open hours           open                text
 
-Sub-ingredient table
-    Sub-ingredient ID           ID
-    Sub-ingredient name         text
-    Allergen                    true|false
+Sub-ingredient table    Sub-ingredient ID           id                  ID
+                        Sub-ingredient name         name                text
+                        Allergen                    allergen            true|false
 
-Ingredient table
-    Ingredient ID               ID
-    Ingredient name             text
-    Sub-ingredient list         [Sub-ingredient ID: ID, ...]
-    Extra allergens note        text
-    Density g/cm3               float
-    Energy kJ/100g              integer
-    Energy kcal/100g            integer
-    Fats total g/100g           float
-    Saturated fats g/100g       float
-    Carbohydrates total g/100g  float
-    Sugars g/100g               float
-    Dietary fiber g/100g        float
-    Proteins g/100g             float
-    Salt g/100g                 float
-    Shop ID                     ID
-    Product name                text
-    Product manufacturer name   text
-    Product description         text
-    Product net weight g        integer
-    Product gross price €       float
-    Product VAT %               float
+Ingredient table        Ingredient ID               id                  ID
+                        Ingredient name             name                text
+                        Sub-ingredient list         subingredients      [Sub-ingredient ID: ID, ...]
+                        Extra allergens note        extra_allergens     text
+                        Density g/cm3               density             float
+                        Energy kJ/100g              energy_kj           integer
+                        Energy kcal/100g            energy_kcal         integer
+                        Fats total g/100g           total_fats          float
+                        Saturated fats g/100g       saturated_fats      float
+                        Carbohydrates total g/100g  total_carbohydrates float
+                        Sugars g/100g               sugars              float
+                        Dietary fiber g/100g        fiber               float
+                        Proteins g/100g             proteins            float
+                        Salt g/100g                 salt                float
+                        Shop ID                     p_source            ID
+                        Product name                p_name              text
+                        Product manufacturer name   p_manufacturer      text
+                        Product description         p_description       text
+                        Product net weight g        p_weight            integer
+                        Product gross price €       p_gross_price       float
+                        Product VAT %               p_vat               float
 
-Recipe table
-    Recipe ID                   ID
-    Recipe name                 text
-    Ingredient list             [(Ingredient ID: ID, Ingredient weight g: integer), ...]
-    Notes                       text
-    Steps                       text
-    Cooling time limit day      integer
-    Freezing time limit month   integer
+Recipe table            Recipe ID                   id                  ID
+                        Recipe name                 name                text
+                        Ingredient list             ingredients         [(Ingredient ID: ID, Ingredient weight g: integer), ...]
+                        Notes                       notes               text
+                        Steps                       steps               text
+                        Cooling time limit day      cooling             integer
+                        Freezing time limit month   freezing            integer
 
-Volume table
-    Volume ID                   ID
-    Volume name                 text
-    Volume value ml, cm3        integer
+Volume table            Volume ID                   id                  ID
+                        Volume name                 name                text
+                        Volume value ml, cm3        value               float

@@ -1,54 +1,59 @@
-Source management
-    List all source names
-    Find sources
-    Add source
-    Modify source
-    Delete source
-    Load sources
-    Save sources
+SERVICE TREE                            ENDPOINT                            RESPONSE VIEW       NOTES
+-----------------------------------------------------------------------------------------------------
+Source Management
+    Query Services
+        Root                            GET /source/list                    source_list
+        List all sources                GET /source/list                    source_list
+        Search sources                  GET /source/search/{text}           source_list
+        Find source                     GET /source/{id}                    source
+    Manipulation Services
+        Add source                      POST /source                        source_list
+        Modify source                   PUT /source/{id}                    source
+        Delete source                   DELETE /source/{id}                 source_list
 
-Sub-ingredient management
-    List all sub-ingredient names
-    Find sub-ingredient
-    Add sub-ingredient
-    Modify sub-ingredient
-    Delete sub-ingredient
-    Load sub-ingredients
-    Save sub-ingredients
+Sub-ingredient Management
+    Query Services
+        List all sub-ingredients        GET /subingredient/list             subingredient_list
+        Search sub-ingredients          GET /subingredient/search/{text}    subingredient_list
+        Find sub-ingredient             GET /subingredient/{id}             subingredient
+    Manipulation Services
+        Add sub-ingredient              POST /subingredient                 subingredient_list
+        Modify sub-ingredient           PUT /subingredient/{id}             subingredient
+        Delete sub-ingredient           DELETE /subingredient/{id}          subingredient_list
 
 Ingredient management
-    List all ingredient names
-    Find ingredients
-    Add ingredient
-    Modify ingredient
-    Delete ingredient
-    Load ingredients
-    Save ingredients
+    Query Services
+        List all ingredients            GET /ingredient/list                ingredient_list
+        Search ingredients              GET /ingredient/search/{text}       ingredient_list
+        Find ingredient                 GET /ingredient/{id}                ingredient
+    Manipulation Services
+        Add ingredient                  POST /ingredient                    ingredient_list
+        Modify ingredient               PUT /ingredient/{id}                ingredient
+        Delete ingredient               DELETE /ingredient/{id}             ingredient_list
 
 Recipe management
-    List all recipe names
-    Find recipes
-    Add recipe
-    Modify recipe
-    Delete recipe
-    Load recipes
-    Save recipes
+    Query Services
+        List all recipes                GET /recipe/list                    recipe_list
+        Search recipes                  GET /recipe/search/{text}           recipe_list
+        Find recipe                     GET /recipe/{id}                    recipe
+    Manipulation Services
+        Add recipe                      POST /recipe                        recipe_list
+        Modify recipe                   PUT /recipe/{id}                    recipe
+        Delete recipe                   DELETE /recipe/{id}                 recipe_list
 
 Volume management
-    List all volume names
-    Find volumes
-    Add volume
-    Modify volume
-    Delete volume
-    Load volumes
-    Save volumes
+    Query Services
+        List all volumes                GET /volume/list                    volume_list
+        Search volumes                  GET /volume/search/{text}           volume_list
+        Find volume                     GET /volume/{id}                    volume
+    Manipulation Services
+        Add volume                      POST /volume                        volume_list
+        Modify volume                   PUT /volume/{id}                    volume
+        Delete volume                   DELETE /volume/{id}                 volume_list
 
 Recipe statistics
-    Generate recipe ingredient list
-    Generate recipe allergens list
-    Generate recipe data sheet
-    Generate net price
-    Generate gross price
+    Generate recipe                     GET /generate/recipe                recipe_page         ingredients, quantities, notes, steps
+    Generate recipe data                GET /generate/data/{id}             recipe_data         sub-ingredients, allergens, data sheet, prices
 
 Calculators
 ?

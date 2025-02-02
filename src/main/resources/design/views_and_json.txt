@@ -1,0 +1,96 @@
+view: source_list
+{
+"sourceList": [{"sourceId" : <integer>, "sourceName" : <string>}, ...],
+"selectedId" : <long>
+}
+
+
+view: source
+{
+    "id" : <long>,
+    "name" : <string>,
+    "webshop" : <string>,
+    "open" : <string>
+}
+
+
+view: subingredient_list
+{
+"subIngredientList": [{"subIngredientId" : <integer>, "subIngredientName" : <string>}, ...],
+"selectedId" : <long>
+}
+
+
+view: subingredient
+{
+    "id" : <long>,
+    "name" : <string>,
+    "allergen" : <string>
+}
+
+
+view: ingredient_list
+{
+"ingredientList": [{"ingredientId" : <integer>, "ingredientName" : <string>}, ...],
+"selectedId" : <long>
+}
+
+
+view: ingredient
+{
+    "id" : <long>,
+    "name" : <string>,
+    "subIngredients" : [{"subIngredientId" : <long>, "subIngredientName" : <string>}],
+    "extraAllergens" : <string>,
+    "density" : <float>,
+    "energyKj" : <integer>,
+    "energyKcal" : <integer>,
+    "totalFats" : <float>,
+    "saturatedFats" : <float>,
+    "totalCarbohydrates" : <float>,
+    "sugars" : <float>,
+    "fiber" : <float>,
+    "proteins" : <float>,
+    "salt" : <float>,
+    "productSource" : {"sourceId" : <integer>, "sourceName" : <string>},
+    "productName" : <text>,
+    "productManufacturer" : <text>,
+    "productDescription" : <text>,
+    "productWeight" : <integer>,
+    "productGrossPrice" : <float>,
+    "productVat" : <float>
+}
+
+
+view: recipe_list
+{
+"recipeList": [{"recipeId" : <integer>, "recipeName" : <string>}, ...],
+"selectedId" : <long>
+}
+
+
+view: recipe
+{
+    "id" : <long>,
+    "name" : <string>,
+    "ingredients" : [{"ingredientId" : <long>, "ingredientName" : <string>, "ingredientWeight" : integer}, ...],
+    "notes" : <string>,
+    "steps" : <string>,
+    "cooling" : <integer>,
+    "freezing" : <integer>
+}
+
+
+view: volume_list
+{
+"volumeList": [{"volumeId" : <integer>, "volumeName" : <string>}, ...],
+"selectedId" : <long>
+}
+
+
+view: volume
+{
+    "id" : <long>,
+    "name" : <string>,
+    "value" : <float>
+}

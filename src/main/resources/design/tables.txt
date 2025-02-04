@@ -1,17 +1,17 @@
 TABLE                   COLUMN PURPOSE              COLUMN NAME         TYPE
 ----------------------------------------------------------------------------
-Source table            Source ID                   id                  ID
+source                  Source ID                   id                  ID
                         Source name                 name                text
                         Source webshop              webshop             text
                         Source open hours           open                text
 
-Sub-ingredient table    Sub-ingredient ID           id                  ID
+sub_ingredient          Sub-ingredient ID           id                  ID
                         Sub-ingredient name         name                text
                         Allergen                    allergen            true|false
 
-Ingredient table        Ingredient ID               id                  ID
+ingredient              Ingredient ID               id                  ID
                         Ingredient name             name                text
-                        Sub-ingredient list         subingredients      [Sub-ingredient ID: ID, ...]
+                        Sub-ingredient list         subingredient_ids   [Sub-ingredient ID: ID, ...]
                         Extra allergens note        extra_allergens     text
                         Density g/cm3               density             float
                         Energy kJ/100g              energy_kj           integer
@@ -23,7 +23,7 @@ Ingredient table        Ingredient ID               id                  ID
                         Dietary fiber g/100g        fiber               float
                         Proteins g/100g             proteins            float
                         Salt g/100g                 salt                float
-                        Shop ID                     p_source            ID
+                        Shop ID                     p_source_id         ID
                         Product name                p_name              text
                         Product manufacturer name   p_manufacturer      text
                         Product description         p_description       text
@@ -31,14 +31,15 @@ Ingredient table        Ingredient ID               id                  ID
                         Product gross price €       p_gross_price       float
                         Product VAT %               p_vat               float
 
-Recipe table            Recipe ID                   id                  ID
+recipe                  Recipe ID                   id                  ID
                         Recipe name                 name                text
-                        Ingredient list             ingredients         [(Ingredient ID: ID, Ingredient weight g: integer), ...]
+                        Ingredient IDs              ingredient_ids      [Ingredient ID: ID, ...]
+                        Ingredient weights          ingredient_weights  [Ingredient weight g: integer, ...]
                         Notes                       notes               text
                         Steps                       steps               text
-                        Cooling time limit day      cooling             integer
-                        Freezing time limit month   freezing            integer
+                        Cooling time limit day      cooling_limit       integer
+                        Freezing time limit month   freezing_limit      integer
 
-Volume table            Volume ID                   id                  ID
+volume                  Volume ID                   id                  ID
                         Volume name                 name                text
                         Volume value ml, cm3        value               float

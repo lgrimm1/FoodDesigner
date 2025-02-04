@@ -1,7 +1,6 @@
 view: source_list
 {
-"sourceList": [{"sourceId" : <integer>, "sourceName" : <string>}, ...],
-"selectedId" : <long>
+    "sourceList": [{"sourceId" : <integer>, "sourceName" : <string>}, ...],
 }
 
 
@@ -16,8 +15,7 @@ view: source
 
 view: subingredient_list
 {
-"subIngredientList": [{"subIngredientId" : <integer>, "subIngredientName" : <string>}, ...],
-"selectedId" : <long>
+    "subIngredientList": [{"subIngredientId" : <integer>, "subIngredientName" : <string>}, ...],
 }
 
 
@@ -31,8 +29,7 @@ view: subingredient
 
 view: ingredient_list
 {
-"ingredientList": [{"ingredientId" : <integer>, "ingredientName" : <string>}, ...],
-"selectedId" : <long>
+    "ingredientList": [{"ingredientId" : <integer>, "ingredientName" : <string>}, ...],
 }
 
 
@@ -40,7 +37,7 @@ view: ingredient
 {
     "id" : <long>,
     "name" : <string>,
-    "subIngredients" : [{"subIngredientId" : <long>, "subIngredientName" : <string>}],
+    "subIngredientList" : [{"subIngredientId" : <long>, "subIngredientName" : <string>}],
     "extraAllergens" : <string>,
     "density" : <float>,
     "energyKj" : <integer>,
@@ -64,8 +61,7 @@ view: ingredient
 
 view: recipe_list
 {
-"recipeList": [{"recipeId" : <integer>, "recipeName" : <string>}, ...],
-"selectedId" : <long>
+    "recipeList": [{"recipeId" : <integer>, "recipeName" : <string>}, ...],
 }
 
 
@@ -73,18 +69,17 @@ view: recipe
 {
     "id" : <long>,
     "name" : <string>,
-    "ingredients" : [{"ingredientId" : <long>, "ingredientName" : <string>, "ingredientWeight" : integer}, ...],
+    "ingredientList" : [{"ingredientId" : <long>, "ingredientName" : <string>, "ingredientWeight" : integer}, ...],
     "notes" : <string>,
     "steps" : <string>,
-    "cooling" : <integer>,
-    "freezing" : <integer>
+    "coolingLimit" : <integer>,
+    "freezingLimit" : <integer>
 }
 
 
 view: volume_list
 {
-"volumeList": [{"volumeId" : <integer>, "volumeName" : <string>}, ...],
-"selectedId" : <long>
+    "volumeList": [{"volumeId" : <integer>, "volumeName" : <string>}, ...],
 }
 
 

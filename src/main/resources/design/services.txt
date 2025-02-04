@@ -2,7 +2,7 @@ SERVICE TREE                            ENDPOINT                            RESP
 -----------------------------------------------------------------------------------------------------
 Source Management
     Query Services
-        Root                            GET /source/list                    source_list
+        R                            GET /source/list                    source_list
         List all sources                GET /source/list                    source_list
         Search sources                  GET /source/search/{text}           source_list
         Find source                     GET /source/{id}                    source

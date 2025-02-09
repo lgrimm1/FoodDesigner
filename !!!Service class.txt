@@ -1,0 +1,32 @@
+package com.example.microservice.service;
+
+import com.example.microservice.dto.UserDTO;
+import com.example.microservice.entity.User;
+import com.example.microservice.mapper.UserMapper;
+import com.example.microservice.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    public List<UserDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(userMapper::toDto).collect(Collectors.toList());
+    }
+
+    public UserDTO createUser(UserDTO userDTO) {
+        User user = userMapper.toEntity(userDTO);
+        user = userRepository.save(user);
+        return userMapper.toDto(user);
+    }
+}

@@ -1,6 +1,7 @@
 view: source_list
-{
-    "sourceList": [{"sourceId" : <integer>, "sourceName" : <string>}, ...],
+"sourceList": {
+    "message": <string>,
+    "sources": [{"sourceId" : <integer>, "sourceName" : <string>}, ...],
 }
 
 

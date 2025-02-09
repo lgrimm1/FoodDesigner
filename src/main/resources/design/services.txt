@@ -1,59 +1,53 @@
-SERVICE TREE                            ENDPOINT                            RESPONSE VIEW       NOTES
------------------------------------------------------------------------------------------------------
-Source Management
-    Query Services
-        R                            GET /source/list                    source_list
-        List all sources                GET /source/list                    source_list
-        Search sources                  GET /source/search/{text}           source_list
-        Find source                     GET /source/{id}                    source
-    Manipulation Services
-        Add source                      POST /source                        source_list
-        Modify source                   PUT /source/{id}                    source
-        Delete source                   DELETE /source/{id}                 source_list
-
-Sub-ingredient Management
-    Query Services
-        List all sub-ingredients        GET /subingredient/list             subingredient_list
-        Search sub-ingredients          GET /subingredient/search/{text}    subingredient_list
-        Find sub-ingredient             GET /subingredient/{id}             subingredient
-    Manipulation Services
-        Add sub-ingredient              POST /subingredient                 subingredient_list
-        Modify sub-ingredient           PUT /subingredient/{id}             subingredient
-        Delete sub-ingredient           DELETE /subingredient/{id}          subingredient_list
-
-Ingredient management
-    Query Services
-        List all ingredients            GET /ingredient/list                ingredient_list
-        Search ingredients              GET /ingredient/search/{text}       ingredient_list
-        Find ingredient                 GET /ingredient/{id}                ingredient
-    Manipulation Services
-        Add ingredient                  POST /ingredient                    ingredient_list
-        Modify ingredient               PUT /ingredient/{id}                ingredient
-        Delete ingredient               DELETE /ingredient/{id}             ingredient_list
-
-Recipe management
-    Query Services
-        List all recipes                GET /recipe/list                    recipe_list
-        Search recipes                  GET /recipe/search/{text}           recipe_list
-        Find recipe                     GET /recipe/{id}                    recipe
-    Manipulation Services
-        Add recipe                      POST /recipe                        recipe_list
-        Modify recipe                   PUT /recipe/{id}                    recipe
-        Delete recipe                   DELETE /recipe/{id}                 recipe_list
-
-Volume management
-    Query Services
-        List all volumes                GET /volume/list                    volume_list
-        Search volumes                  GET /volume/search/{text}           volume_list
-        Find volume                     GET /volume/{id}                    volume
-    Manipulation Services
-        Add volume                      POST /volume                        volume_list
-        Modify volume                   PUT /volume/{id}                    volume
-        Delete volume                   DELETE /volume/{id}                 volume_list
-
-Recipe statistics
-    Generate recipe                     GET /generate/recipe                recipe_page         ingredients, quantities, notes, steps
-    Generate recipe data                GET /generate/data/{id}             recipe_data         sub-ingredients, allergens, data sheet, prices
-
-Calculators
-?
+SERVICE                     ENDPOINT                        RESPONSE VIEW
+-------------------------------------------------------------------------
+root                        GET /                           source_list
+source
+../query
+../../listsources           GET /source/list                    source_list
+../../searchsources         GET /source/search/{text}           source_list
+../../findsource            GET /source/{id}                    source
+../manipulation
+../../addsource             POST /source                        source_list
+../../modifysource          PUT /source/{id}                    source
+../../deletesource          DELETE /source/{id}                 source_list
+subingredient
+../query
+../../listsubingredients    GET /subingredient/list             subingredient_list
+../../searchsubingredients  GET /subingredient/search/{text}    subingredient_list
+../../findsubingredient     GET /subingredient/{id}             subingredient
+../manipulation
+../../addsubingredient      POST /subingredient                 subingredient_list
+../../modifysubingredient   PUT /subingredient/{id}             subingredient
+../../deletesubingredient   DELETE /subingredient/{id}          subingredient_list
+ingredient
+../query
+../../listingredients       GET /ingredient/list                ingredient_list
+../../searchingredients     GET /ingredient/search/{text}       ingredient_list
+../../findingredient        GET /ingredient/{id}                ingredient
+../manipulation
+../../addingredient         POST /ingredient                    ingredient_list
+../../modifyingredient      PUT /ingredient/{id}                ingredient
+../../deleteingredient      DELETE /ingredient/{id}             ingredient_list
+recipe
+../query
+../../listrecipes           GET /recipe/list                    recipe_list
+../../searchrecipes         GET /recipe/search/{text}           recipe_list
+../../findrecipe            GET /recipe/{id}                    recipe
+../manipulation
+../../addrecipe             POST /recipe                        recipe_list
+../../modifyrecipe          PUT /recipe/{id}                    recipe
+../../deleterecipe          DELETE /recipe/{id}                 recipe_list
+volume
+../query
+../../listvolumes           GET /volume/list                    volume_list
+../../searchvolumes         GET /volume/search/{text}           volume_list
+../../findvolume            GET /volume/{id}                    volume
+../manipulation
+../../addvolume             POST /volume                        volume_list
+../../modifyvolume          PUT /volume/{id}                    volume
+../../deletevolume          DELETE /volume/{id}                 volume_list
+generator
+../generaterecipe           GET /generator/recipe/{id}          recipe_page
+../generaterecipedata       GET /generator/recipedata/{id}      recipe_data
+calculator
+../?

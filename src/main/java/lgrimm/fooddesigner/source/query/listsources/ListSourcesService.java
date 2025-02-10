@@ -4,16 +4,13 @@ import lgrimm.fooddesigner.domain.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
-import java.util.*;
-import java.util.stream.*;
-
 @Service
 public class ListSourcesService {
 	private final SourceRepository repository;
-	private final SourceListSourcesMapper mapper;
+	private final ListSourcesMapper mapper;
 
 	@Autowired
-	public ListSourcesService(SourceRepository repository, SourceListSourcesMapper mapper) {
+	public ListSourcesService(SourceRepository repository, ListSourcesMapper mapper) {
 		this.repository = repository;
 		this.mapper = mapper;
 	}

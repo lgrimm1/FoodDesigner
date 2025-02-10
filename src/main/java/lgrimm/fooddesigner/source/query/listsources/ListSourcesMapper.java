@@ -8,9 +8,9 @@ import java.util.stream.*;
 import lgrimm.fooddesigner.domain.*;
 
 @Component
-public class SourceListSourcesMapper {
+public class ListSourcesMapper {
 
-	private ListSourcesElement toSourceEntityDTO(SourceEntity sourceEntity) {
+	private ListSourcesElement toListSourcesElement(SourceEntity sourceEntity) {
 		if (sourceEntity == null) {
 			throw new IllegalArgumentException();
 		}
@@ -21,9 +21,9 @@ public class SourceListSourcesMapper {
 		if (sourceEntities == null || message == null) {
 			throw new IllegalArgumentException();
 		}
-		List<ListSourcesElement> rootEntities = sourceEntities.stream()
-				.map(this::toSourceEntityDTO)
+		List<ListSourcesElement> listSourcesElements = sourceEntities.stream()
+				.map(this::toListSourcesElement)
 				.collect(Collectors.toList());
-		return new ListSourcesDTO(rootEntities, message);
+		return new ListSourcesDTO(listSourcesElements, message);
 	}
 }

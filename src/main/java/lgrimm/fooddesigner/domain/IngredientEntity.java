@@ -52,7 +52,7 @@ public class IngredientEntity implements Serializable {
 	@Column(name = "p_gross_price", nullable = false, unique = false)
 	private double productGrossPrice;
 	@Column(name = "p_vat", nullable = false, unique = false)
-	private double productVat;
+	private double productVatPercent;
 
 	public IngredientEntity() {
 	}
@@ -77,7 +77,7 @@ public class IngredientEntity implements Serializable {
 			String productDescription,
 			int productWeight,
 			double productGrossPrice,
-			double productVat) {
+			double productVatPercent) {
 		if (name == null ||
 				subIngredientIds == null ||
 				extraAllergens == null ||
@@ -105,7 +105,7 @@ public class IngredientEntity implements Serializable {
 		this.productDescription = productDescription;
 		this.productWeight = productWeight;
 		this.productGrossPrice = productGrossPrice;
-		this.productVat = productVat;
+		this.productVatPercent = productVatPercent;
 	}
 
 	public IngredientEntity(
@@ -129,7 +129,7 @@ public class IngredientEntity implements Serializable {
 			String productDescription,
 			int productWeight,
 			double productGrossPrice,
-			double productVat) {
+			double productVatPercent) {
 		if (name == null ||
 				subIngredientIds == null ||
 				extraAllergens == null ||
@@ -158,7 +158,7 @@ public class IngredientEntity implements Serializable {
 		this.productDescription = productDescription;
 		this.productWeight = productWeight;
 		this.productGrossPrice = productGrossPrice;
-		this.productVat = productVat;
+		this.productVatPercent = productVatPercent;
 	}
 
 	public long getId() {
@@ -241,8 +241,8 @@ public class IngredientEntity implements Serializable {
 		return productGrossPrice;
 	}
 
-	public double getProductVat() {
-		return productVat;
+	public double getProductVatPercent() {
+		return productVatPercent;
 	}
 
 	public void setId(long id) {
@@ -343,8 +343,8 @@ public class IngredientEntity implements Serializable {
 		this.productGrossPrice = productGrossPrice;
 	}
 
-	public void setProductVat(double productVat) {
-		this.productVat = productVat;
+	public void setProductVatPercent(double productVatPercent) {
+		this.productVatPercent = productVatPercent;
 	}
 
 	@Override
@@ -365,7 +365,7 @@ public class IngredientEntity implements Serializable {
 				productSourceId == that.productSourceId &&
 				productWeight == that.productWeight &&
 				Double.compare(productGrossPrice, that.productGrossPrice) == 0 &&
-				Double.compare(productVat, that.productVat) == 0 &&
+				Double.compare(productVatPercent, that.productVatPercent) == 0 &&
 				Objects.equals(name, that.name) &&
 				Objects.equals(subIngredientIds, that.subIngredientIds) &&
 				Objects.equals(extraAllergens, that.extraAllergens) &&
@@ -397,7 +397,7 @@ public class IngredientEntity implements Serializable {
 				productDescription,
 				productWeight,
 				productGrossPrice,
-				productVat);
+				productVatPercent);
 	}
 
 	@Override
@@ -423,7 +423,7 @@ public class IngredientEntity implements Serializable {
 				", productDescription='" + productDescription + '\'' +
 				", productWeight=" + productWeight +
 				", productGrossPrice=" + productGrossPrice +
-				", productVat=" + productVat +
+				", productVat=" + productVatPercent +
 				'}';
 	}
 }

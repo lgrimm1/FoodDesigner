@@ -31,7 +31,7 @@ class IngredientEntityTest {
 		assertNull(ingredientEntity.getProductDescription());
 		assertEquals(0, ingredientEntity.getProductWeight());
 		assertEquals(0D, ingredientEntity.getProductGrossPrice());
-		assertEquals(0D, ingredientEntity.getProductVat());
+		assertEquals(0D, ingredientEntity.getProductVatPercent());
 	}
 
 	@Test
@@ -214,7 +214,7 @@ class IngredientEntityTest {
 		assertEquals("pdesc", ingredientEntity.getProductDescription());
 		assertEquals(100, ingredientEntity.getProductWeight());
 		assertEquals(123D, ingredientEntity.getProductGrossPrice());
-		assertEquals(321D, ingredientEntity.getProductVat());
+		assertEquals(321D, ingredientEntity.getProductVatPercent());
 	}
 
 	@Test
@@ -404,7 +404,7 @@ class IngredientEntityTest {
 		assertEquals("pdesc", ingredientEntity.getProductDescription());
 		assertEquals(100, ingredientEntity.getProductWeight());
 		assertEquals(123D, ingredientEntity.getProductGrossPrice());
-		assertEquals(321D, ingredientEntity.getProductVat());
+		assertEquals(321D, ingredientEntity.getProductVatPercent());
 	}
 
 	@Test
@@ -460,7 +460,7 @@ class IngredientEntityTest {
 		ingredientEntity.setProductDescription("fff");
 		ingredientEntity.setProductWeight(3500);
 		ingredientEntity.setProductGrossPrice(12345.6D);
-		ingredientEntity.setProductVat(321.1D);
+		ingredientEntity.setProductVatPercent(321.1D);
 
 		assertEquals(-36L, ingredientEntity.getId());
 		assertEquals("aaa", ingredientEntity.getName());
@@ -482,6 +482,6 @@ class IngredientEntityTest {
 		assertEquals("fff", ingredientEntity.getProductDescription());
 		assertEquals(3500, ingredientEntity.getProductWeight());
 		assertEquals(12345.6D, ingredientEntity.getProductGrossPrice());
-		assertEquals(321.1D, ingredientEntity.getProductVat());
+		assertEquals(321.1D, ingredientEntity.getProductVatPercent());
 	}
 }

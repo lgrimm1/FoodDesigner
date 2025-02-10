@@ -30,7 +30,7 @@ class ListSourcesServiceTest {
 		listSourcesElements.add(listSourcesElement1);
 		listSourcesElements.add(listSourcesElement2);
 		ListSourcesDTO listSourcesDTO = new ListSourcesDTO(listSourcesElements, message);
-		SourceListSourcesMapper mapper = Mockito.mock(SourceListSourcesMapper.class);
+		ListSourcesMapper mapper = Mockito.mock(ListSourcesMapper.class);
 		when(mapper.toListSourcesDTO(sourceEntities, message))
 				.thenReturn(listSourcesDTO);
 

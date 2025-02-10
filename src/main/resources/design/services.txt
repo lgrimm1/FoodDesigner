@@ -4,7 +4,7 @@ root                        GET /                           source_list
 source
 ../query
 ../../listsources           GET /source/list                    source_list
-../../searchsources         GET /source/search/{text}           source_list
+../../searchsources         GET /source/search/{name}           source_list
 ../../findsource            GET /source/{id}                    source
 ../manipulation
 ../../addsource             POST /source                        source_list
@@ -13,7 +13,7 @@ source
 subingredient
 ../query
 ../../listsubingredients    GET /subingredient/list             subingredient_list
-../../searchsubingredients  GET /subingredient/search/{text}    subingredient_list
+../../searchsubingredients  GET /subingredient/search/{name}    subingredient_list
 ../../findsubingredient     GET /subingredient/{id}             subingredient
 ../manipulation
 ../../addsubingredient      POST /subingredient                 subingredient_list
@@ -22,7 +22,7 @@ subingredient
 ingredient
 ../query
 ../../listingredients       GET /ingredient/list                ingredient_list
-../../searchingredients     GET /ingredient/search/{text}       ingredient_list
+../../searchingredients     GET /ingredient/search/{name}       ingredient_list
 ../../findingredient        GET /ingredient/{id}                ingredient
 ../manipulation
 ../../addingredient         POST /ingredient                    ingredient_list
@@ -31,7 +31,7 @@ ingredient
 recipe
 ../query
 ../../listrecipes           GET /recipe/list                    recipe_list
-../../searchrecipes         GET /recipe/search/{text}           recipe_list
+../../searchrecipes         GET /recipe/search/{name}           recipe_list
 ../../findrecipe            GET /recipe/{id}                    recipe
 ../manipulation
 ../../addrecipe             POST /recipe                        recipe_list
@@ -40,7 +40,7 @@ recipe
 volume
 ../query
 ../../listvolumes           GET /volume/list                    volume_list
-../../searchvolumes         GET /volume/search/{text}           volume_list
+../../searchvolumes         GET /volume/search/{name}           volume_list
 ../../findvolume            GET /volume/{id}                    volume
 ../manipulation
 ../../addvolume             POST /volume                        volume_list

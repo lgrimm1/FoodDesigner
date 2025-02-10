@@ -22,7 +22,7 @@ class ListSourcesControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 	@MockitoBean
-	private ListSourcesService listSourcesService;
+	private ListSourcesService service;
 
 	@Test
 	void listSources() throws Exception {
@@ -33,7 +33,7 @@ class ListSourcesControllerTest {
 		listSourcesElements.add(listSourcesElement2);
 		String message = "";
 		ListSourcesDTO listSourcesDTO = new ListSourcesDTO(listSourcesElements, message);
-		when(listSourcesService.listSources())
+		when(service.listSources())
 				.thenReturn(listSourcesDTO);
 
 		mockMvc

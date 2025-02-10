@@ -7,7 +7,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SourceListSourcesMapperTest {
+class ListSourcesMapperTest {
 	@Test
 	void toListSourcesDTO() {
 		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webshop1", "openHours1");
@@ -23,7 +23,7 @@ class SourceListSourcesMapperTest {
 		listSourcesElements.add(listSourcesElement1);
 		listSourcesElements.add(listSourcesElement2);
 
-		SourceListSourcesMapper mapper = new SourceListSourcesMapper();
+		ListSourcesMapper mapper = new ListSourcesMapper();
 
 		assertThrows(IllegalArgumentException.class, () -> mapper.toListSourcesDTO(null, message));
 		assertThrows(IllegalArgumentException.class, () -> mapper.toListSourcesDTO(sourceEntities, null));

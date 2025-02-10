@@ -7,7 +7,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "recipe")
-public class Recipe implements Serializable {
+public class RecipeEntity implements Serializable {
 	@Id
 	@Column(name = "id")
 	@SequenceGenerator(name = "recipe_id_generator", sequenceName = "recipe_id_generator", allocationSize = 1)
@@ -30,10 +30,10 @@ public class Recipe implements Serializable {
 	@Transient
 	private Map<Long, Integer> ingredientsAndWeightsMap;
 
-	public Recipe() {
+	public RecipeEntity() {
 	}
 
-	public Recipe(
+	public RecipeEntity(
 			String name,
 			List<Long> ingredientIds,
 			List<Integer> ingredientWeights,
@@ -58,7 +58,7 @@ public class Recipe implements Serializable {
 		this.freezingLimit = freezingLimit;
 	}
 
-	public Recipe(
+	public RecipeEntity(
 			long id,
 			String name,
 			List<Long> ingredientIds,
@@ -186,8 +186,9 @@ public class Recipe implements Serializable {
 
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Recipe that)) return false;
-		return id == that.id &&
+		if (!(o instanceof RecipeEntity that)) return false;
+		return
+				id == that.id &&
 				coolingLimit == that.coolingLimit &&
 				freezingLimit == that.freezingLimit &&
 				Objects.equals(name, that.name) &&
@@ -214,7 +215,7 @@ public class Recipe implements Serializable {
 
 	@Override
 	public String toString() {
-		return "RecipeDomain{" +
+		return "RecipeEntity{" +
 				"id=" + id +
 				", name='" + name + '\'' +
 				", ingredientIds=" + ingredientIds +

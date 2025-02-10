@@ -7,7 +7,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "volume")
-public class Volume implements Serializable {
+public class VolumeEntity implements Serializable {
 	@Id
 	@Column(name = "id")
 	@SequenceGenerator(name = "volume_id_generator", sequenceName = "volume_id_generator", allocationSize = 1)
@@ -18,10 +18,10 @@ public class Volume implements Serializable {
 	@Column(name = "value", nullable = false, unique = false)
 	private double value;
 
-	public Volume() {
+	public VolumeEntity() {
 	}
 
-	public Volume(String name, double value) {
+	public VolumeEntity(String name, double value) {
 		if (name == null) {
 			throw new IllegalArgumentException();
 		}
@@ -29,7 +29,7 @@ public class Volume implements Serializable {
 		this.value = value;
 	}
 
-	public Volume(long id, String name, double value) {
+	public VolumeEntity(long id, String name, double value) {
 		if (name == null) {
 			throw new IllegalArgumentException();
 		}
@@ -67,8 +67,9 @@ public class Volume implements Serializable {
 
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Volume that)) return false;
-		return id == that.id &&
+		if (!(o instanceof VolumeEntity that)) return false;
+		return
+				id == that.id &&
 				Double.compare(value, that.value) == 0 &&
 				Objects.equals(name, that.name);
 	}
@@ -80,7 +81,7 @@ public class Volume implements Serializable {
 
 	@Override
 	public String toString() {
-		return "VolumeDomain{" +
+		return "VolumeEntity{" +
 				"id=" + id +
 				", name='" + name + '\'' +
 				", value=" + value +

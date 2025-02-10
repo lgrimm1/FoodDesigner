@@ -7,7 +7,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "sub_ingredient")
-public class SubIngredient implements Serializable {
+public class SubIngredientEntity implements Serializable {
 	@Id
 	@Column(name = "id")
 	@SequenceGenerator(name = "subingredient_id_generator", sequenceName = "subingredient_id_generator", allocationSize = 1)
@@ -18,10 +18,10 @@ public class SubIngredient implements Serializable {
 	@Column(name = "allergen", nullable = false, unique = false, columnDefinition = "TEXT")
 	private String allergen;
 
-	public SubIngredient() {
+	public SubIngredientEntity() {
 	}
 
-	public SubIngredient(
+	public SubIngredientEntity(
 			String name,
 			String allergen) {
 		if (name == null || allergen == null) {
@@ -31,7 +31,7 @@ public class SubIngredient implements Serializable {
 		this.allergen = allergen;
 	}
 
-	public SubIngredient(
+	public SubIngredientEntity(
 			long id,
 			String name,
 			String allergen) {
@@ -75,8 +75,11 @@ public class SubIngredient implements Serializable {
 
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof SubIngredient that)) return false;
-		return id == that.id && Objects.equals(name, that.name) && Objects.equals(allergen, that.allergen);
+		if (!(o instanceof SubIngredientEntity that)) return false;
+		return
+				id == that.id &&
+				Objects.equals(name, that.name) &&
+				Objects.equals(allergen, that.allergen);
 	}
 
 	@Override
@@ -86,7 +89,7 @@ public class SubIngredient implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SubIngredientDomain{" +
+		return "SubIngredientEntity{" +
 				"id=" + id +
 				", name='" + name + '\'' +
 				", allergen='" + allergen + '\'' +

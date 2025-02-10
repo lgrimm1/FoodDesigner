@@ -7,7 +7,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "ingredient")
-public class Ingredient implements Serializable {
+public class IngredientEntity implements Serializable {
 	@Id
 	@Column(name = "id")
 	@SequenceGenerator(name = "ingredient_id_generator", sequenceName = "ingredient_id_generator", allocationSize = 1)
@@ -54,10 +54,10 @@ public class Ingredient implements Serializable {
 	@Column(name = "p_vat", nullable = false, unique = false)
 	private double productVat;
 
-	public Ingredient() {
+	public IngredientEntity() {
 	}
 
-	public Ingredient(
+	public IngredientEntity(
 			String name,
 			List<Long> subIngredientIds,
 			String extraAllergens,
@@ -108,7 +108,7 @@ public class Ingredient implements Serializable {
 		this.productVat = productVat;
 	}
 
-	public Ingredient(
+	public IngredientEntity(
 			long id,
 			String name,
 			List<Long> subIngredientIds,
@@ -349,8 +349,9 @@ public class Ingredient implements Serializable {
 
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Ingredient that)) return false;
-		return id == that.id &&
+		if (!(o instanceof IngredientEntity that)) return false;
+		return
+				id == that.id &&
 				Double.compare(density, that.density) == 0 &&
 				energyKj == that.energyKj &&
 				energyKcal == that.energyKcal &&
@@ -401,7 +402,7 @@ public class Ingredient implements Serializable {
 
 	@Override
 	public String toString() {
-		return "IngredientDomain{" +
+		return "IngredientEntity{" +
 				"id=" + id +
 				", name='" + name + '\'' +
 				", subIngredientIds=" + subIngredientIds +

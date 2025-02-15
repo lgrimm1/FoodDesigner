@@ -28,8 +28,7 @@ class RootControllerTest {
 		List<RootElement> rootElements = new ArrayList<>();
 		rootElements.add(rootElement1);
 		rootElements.add(rootElement2);
-		String message = "";
-		RootDTO rootDTO = new RootDTO(rootElements, message);
+		RootDTO rootDTO = new RootDTO(rootElements, "", "");
 		when(service.getRoot())
 				.thenReturn(rootDTO);
 
@@ -39,8 +38,8 @@ class RootControllerTest {
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("source_list"))
+				.andExpect(view().name("recipe_list"))
 				.andExpect(model().size(1))
-				.andExpect(model().attribute("sourceList", rootDTO));
+				.andExpect(model().attribute("recipeList", rootDTO));
 	}
 }

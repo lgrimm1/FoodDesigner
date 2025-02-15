@@ -1,6 +1,6 @@
-SERVICE                     ENDPOINT                            REQUEST VIEW        RESPONSE VIEW
--------------------------------------------------------------------------------------------------
-root                        GET /                                                   source_list
+SERVICE                     ENDPOINT                            REQUEST VIEW        RESPONSE VIEW       NEW PAGE
+----------------------------------------------------------------------------------------------------------------
+root                        GET /                                                   recipe_list
 source
 ../query
 ../../listsources           GET /source/list                                        source_list
@@ -62,6 +62,7 @@ volume
 ../../deletevolume          DELETE /volume/{id}                 volume              volume_list
 ../../deletevolume          DELETE /volume/{id}                 volume_list         volume_list
 generator
+../generatestatistics       GET /generator/statistics           recipe_list         statistics          x
 ../generaterecipe           GET /generator/recipe/{id}          recipe_list         recipe_page
 ../generaterecipe           GET /generator/recipe/{id}          recipe_data         recipe_page
 ../generaterecipedata       GET /generator/recipedata/{id}      recipe_list         recipe_data

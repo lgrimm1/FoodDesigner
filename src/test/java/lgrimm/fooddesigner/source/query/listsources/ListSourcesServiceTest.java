@@ -13,9 +13,8 @@ class ListSourcesServiceTest {
 
 	@Test
 	void listSources() {
-		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webshop1", "openHours1");
-		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webshop2", "openHours2");
-		String message = "";
+		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webShop1", "openHours1");
+		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webShop2", "openHours2");
 
 		List<SourceEntity> sourceEntities = new ArrayList<>();
 		sourceEntities.add(sourceEntity1);
@@ -29,14 +28,15 @@ class ListSourcesServiceTest {
 		List<ListSourcesElement> listSourcesElements = new ArrayList<>();
 		listSourcesElements.add(listSourcesElement1);
 		listSourcesElements.add(listSourcesElement2);
-		ListSourcesDTO listSourcesDTO = new ListSourcesDTO(listSourcesElements, message);
+		ListSourcesDTO listSourcesDTO = new ListSourcesDTO(listSourcesElements, "", "");
 		ListSourcesMapper mapper = Mockito.mock(ListSourcesMapper.class);
-		when(mapper.toListSourcesDTO(sourceEntities, message))
+		when(mapper.toListSourcesDTO(sourceEntities))
 				.thenReturn(listSourcesDTO);
 
 		ListSourcesService service = new ListSourcesService(repository, mapper);
-		ListSourcesDTO actualListSourcesDTO1 = service.listSources();
-		assertEquals(listSourcesElements, actualListSourcesDTO1.getSources());
-		assertEquals(message, actualListSourcesDTO1.getMessage());
+		ListSourcesDTO actualListSourcesDTO = service.listSources();
+		assertEquals(listSourcesElements, actualListSourcesDTO.getSources());
+		assertTrue(actualListSourcesDTO.getSearchText().isEmpty());
+		assertTrue(actualListSourcesDTO.getMessage().isEmpty());
 	}
 }

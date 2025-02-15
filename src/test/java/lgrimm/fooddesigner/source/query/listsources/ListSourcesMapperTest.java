@@ -15,7 +15,6 @@ class ListSourcesMapperTest {
 		List<SourceEntity> sourceEntities = new ArrayList<>();
 		sourceEntities.add(sourceEntity1);
 		sourceEntities.add(sourceEntity2);
-		String message = "message";
 
 		ListSourcesElement listSourcesElement1 = new ListSourcesElement(1L, "name1");
 		ListSourcesElement listSourcesElement2 = new ListSourcesElement(2L, "name2");
@@ -25,11 +24,11 @@ class ListSourcesMapperTest {
 
 		ListSourcesMapper mapper = new ListSourcesMapper();
 
-		assertThrows(IllegalArgumentException.class, () -> mapper.toListSourcesDTO(null, message));
-		assertThrows(IllegalArgumentException.class, () -> mapper.toListSourcesDTO(sourceEntities, null));
+		assertThrows(IllegalArgumentException.class, () -> mapper.toListSourcesDTO(null));
 
-		ListSourcesDTO actualListSourcesDTO = mapper.toListSourcesDTO(sourceEntities, message);
+		ListSourcesDTO actualListSourcesDTO = mapper.toListSourcesDTO(sourceEntities);
 		assertEquals(listSourcesElements, actualListSourcesDTO.getSources());
-		assertEquals(message, actualListSourcesDTO.getMessage());
+		assertTrue(actualListSourcesDTO.getSearchText().isEmpty());
+		assertTrue(actualListSourcesDTO.getMessage().isEmpty());
 	}
 }

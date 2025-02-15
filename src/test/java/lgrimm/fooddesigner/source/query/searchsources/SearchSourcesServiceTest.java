@@ -31,6 +31,7 @@ class SearchSourcesServiceTest {
 		SearchSourcesDTO searchSourcesDTO = service.searchSources(text);
 		assertEquals("No text were given.", searchSourcesDTO.getMessage());
 		assertTrue(searchSourcesDTO.getSources().isEmpty());
+		assertTrue(searchSourcesDTO.getSearchText().isEmpty());
 	}
 
 	@Test
@@ -39,7 +40,7 @@ class SearchSourcesServiceTest {
 		when(repository.findAllByName("name"))
 				.thenReturn(new ArrayList<SourceEntity>());
 
-		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(new ArrayList<SearchSourcesElement>(), "Found 0 occurrence(s).");
+		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(new ArrayList<SearchSourcesElement>(), "", "Found 0 occurrence(s).");
 		SearchSourcesMapper mapper = Mockito.mock(SearchSourcesMapper.class);
 		when(mapper.toSearchSourcesDTO(new ArrayList<SourceEntity>(), "Found 0 occurrence(s)."))
 				.thenReturn(searchSourcesDTO);
@@ -48,6 +49,7 @@ class SearchSourcesServiceTest {
 		SearchSourcesDTO actualSearchSourcesDTO = service.searchSources("name");
 		assertEquals(new ArrayList<SearchSourcesElement>(), actualSearchSourcesDTO.getSources());
 		assertEquals("Found 0 occurrence(s).", actualSearchSourcesDTO.getMessage());
+		assertTrue(actualSearchSourcesDTO.getSearchText().isEmpty());
 	}
 
 	@Test
@@ -68,7 +70,7 @@ class SearchSourcesServiceTest {
 		List<SearchSourcesElement> searchSourcesElements = new ArrayList<>();
 		searchSourcesElements.add(searchSourcesElement1);
 		searchSourcesElements.add(searchSourcesElement2);
-		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(searchSourcesElements, "Found 2 occurrence(s).");
+		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(searchSourcesElements, "", "Found 2 occurrence(s).");
 		SearchSourcesMapper mapper = Mockito.mock(SearchSourcesMapper.class);
 		when(mapper.toSearchSourcesDTO(sourceEntities, "Found 2 occurrence(s)."))
 				.thenReturn(searchSourcesDTO);
@@ -77,6 +79,7 @@ class SearchSourcesServiceTest {
 		SearchSourcesDTO actualSearchSourcesDTO = service.searchSources("name");
 		assertEquals(searchSourcesDTO.getSources(), actualSearchSourcesDTO.getSources());
 		assertEquals("Found 2 occurrence(s).", actualSearchSourcesDTO.getMessage());
+		assertTrue(actualSearchSourcesDTO.getSearchText().isEmpty());
 	}
 
 	@Test
@@ -109,7 +112,7 @@ class SearchSourcesServiceTest {
 		searchSourcesElements.add(searchSourcesElement2);
 		searchSourcesElements.add(searchSourcesElement3);
 		searchSourcesElements.add(searchSourcesElement4);
-		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(searchSourcesElements, "Found 4 occurrence(s).");
+		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(searchSourcesElements, "", "Found 4 occurrence(s).");
 		SearchSourcesMapper mapper = Mockito.mock(SearchSourcesMapper.class);
 		when(mapper.toSearchSourcesDTO(sourceEntities, "Found 4 occurrence(s)."))
 				.thenReturn(searchSourcesDTO);
@@ -118,6 +121,7 @@ class SearchSourcesServiceTest {
 		SearchSourcesDTO actualSearchSourcesDTO = service.searchSources("name   xyz");
 		assertEquals(searchSourcesDTO.getSources(), actualSearchSourcesDTO.getSources());
 		assertEquals("Found 4 occurrence(s).", actualSearchSourcesDTO.getMessage());
+		assertTrue(actualSearchSourcesDTO.getSearchText().isEmpty());
 	}
 
 	@Test
@@ -136,7 +140,7 @@ class SearchSourcesServiceTest {
 		List<SearchSourcesElement> searchSourcesElements = new ArrayList<>();
 		searchSourcesElements.add(searchSourcesElement1);
 		searchSourcesElements.add(searchSourcesElement2);
-		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(searchSourcesElements, "Something went wrong, returned full list.");
+		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(searchSourcesElements, "", "Something went wrong, returned full list.");
 		SearchSourcesMapper mapper = Mockito.mock(SearchSourcesMapper.class);
 		when(mapper.toSearchSourcesDTO(sourceEntities, "Something went wrong, returned full list."))
 				.thenReturn(searchSourcesDTO);
@@ -145,5 +149,6 @@ class SearchSourcesServiceTest {
 		SearchSourcesDTO actualSearchSourcesDTO = service.listSources();
 		assertEquals(searchSourcesDTO.getSources(), actualSearchSourcesDTO.getSources());
 		assertEquals("Something went wrong, returned full list.", actualSearchSourcesDTO.getMessage());
+		assertTrue(actualSearchSourcesDTO.getSearchText().isEmpty());
 	}
 }

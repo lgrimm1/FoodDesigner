@@ -31,7 +31,7 @@ public class SearchSourcesService {
 			throw new IllegalArgumentException();
 		}
 		if (text.isBlank()) {
-			return new SearchSourcesDTO(new ArrayList<SearchSourcesElement>(), "No text were given.");
+			return new SearchSourcesDTO(new ArrayList<SearchSourcesElement>(), "", "No text were given.");
 		}
 		Set<Long> sourceEntityIds = repository.findAllByName(text.trim()).stream()
 				.map(SourceEntity::getId)

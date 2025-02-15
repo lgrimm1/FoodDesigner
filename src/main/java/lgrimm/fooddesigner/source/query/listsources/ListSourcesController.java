@@ -15,7 +15,7 @@ public class ListSourcesController {
 	}
 
 	@GetMapping("/source/list")
-	public ModelAndView getRoot(Model model) {
+	public ModelAndView listSources(Model model) {
 		model.asMap().clear();
 		return new ModelAndView("source_list", "sourceList", service.listSources());
 	}

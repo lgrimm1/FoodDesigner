@@ -17,13 +17,13 @@ public class ListSourcesMapper {
 		return new ListSourcesElement(sourceEntity.getId(), sourceEntity.getName());
 	}
 
-	public ListSourcesDTO toListSourcesDTO(List<SourceEntity> sourceEntities, String message) {
-		if (sourceEntities == null || message == null) {
+	public ListSourcesDTO toListSourcesDTO(List<SourceEntity> sourceEntities) {
+		if (sourceEntities == null) {
 			throw new IllegalArgumentException();
 		}
 		List<ListSourcesElement> listSourcesElements = sourceEntities.stream()
 				.map(this::toListSourcesElement)
 				.collect(Collectors.toList());
-		return new ListSourcesDTO(listSourcesElements, message);
+		return new ListSourcesDTO(listSourcesElements, "", "");
 	}
 }

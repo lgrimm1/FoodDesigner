@@ -33,7 +33,7 @@ class SearchSourcesControllerTest {
 		searchSourcesElements.add(searchSourcesElement1);
 		searchSourcesElements.add(searchSourcesElement2);
 		String message = "message";
-		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(searchSourcesElements, message);
+		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(searchSourcesElements, "", message);
 		String text = "text";
 		when(service.searchSources(text))
 				.thenReturn(searchSourcesDTO);

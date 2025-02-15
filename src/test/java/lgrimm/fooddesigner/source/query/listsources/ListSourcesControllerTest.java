@@ -31,8 +31,7 @@ class ListSourcesControllerTest {
 		List<ListSourcesElement> listSourcesElements = new ArrayList<>();
 		listSourcesElements.add(listSourcesElement1);
 		listSourcesElements.add(listSourcesElement2);
-		String message = "";
-		ListSourcesDTO listSourcesDTO = new ListSourcesDTO(listSourcesElements, message);
+		ListSourcesDTO listSourcesDTO = new ListSourcesDTO(listSourcesElements, "", "");
 		when(service.listSources())
 				.thenReturn(listSourcesDTO);
 

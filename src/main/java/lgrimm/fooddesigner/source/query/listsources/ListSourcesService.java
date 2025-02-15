@@ -16,6 +16,6 @@ public class ListSourcesService {
 	}
 
 	public ListSourcesDTO listSources() {
-		return mapper.toListSourcesDTO(repository.findAll(), "");
+		return mapper.toListSourcesDTO(repository.findAll());
 	}
 }

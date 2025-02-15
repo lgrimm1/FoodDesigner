@@ -17,6 +17,6 @@ public class RootController {
 	@GetMapping("/")
 	public ModelAndView getRoot(Model model) {
 		model.asMap().clear();
-		return new ModelAndView("source_list", "sourceList", service.getRoot());
+		return new ModelAndView("recipe_list", "recipeList", service.getRoot());
 	}
 }

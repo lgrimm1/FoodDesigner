@@ -1,6 +1,7 @@
 view: source_list
 "sourceList": {
     "sources": [{"sourceId" : <integer>, "sourceName" : <string>}, ...],
+    "searchText" : <string>,
     "message": <string>
 }
 
@@ -18,13 +19,15 @@ view: source
 
 
 view: subingredient_list
-{
-    "subIngredientList": [{"subIngredientId" : <integer>, "subIngredientName" : <string>}, ...],
+"subIngredientList": {
+    "subIngredients": [{"subIngredientId" : <integer>, "subIngredientName" : <string>}, ...],
+    "searchText" : <string>,
+    "message": <string>
 }
 
 
 view: subingredient
-{
+"subIngredient": {
     "id" : <long>,
     "name" : <string>,
     "allergen" : <string>
@@ -32,13 +35,15 @@ view: subingredient
 
 
 view: ingredient_list
-{
-    "ingredientList": [{"ingredientId" : <integer>, "ingredientName" : <string>}, ...],
+"ingredientList": {
+    "ingredients": [{"ingredientId" : <integer>, "ingredientName" : <string>}, ...],
+    "searchText" : <string>,
+    "message": <string>
 }
 
 
 view: ingredient
-{
+"ingredient": {
     "id" : <long>,
     "name" : <string>,
     "subIngredientList" : [{"subIngredientId" : <long>, "subIngredientName" : <string>}],
@@ -64,13 +69,15 @@ view: ingredient
 
 
 view: recipe_list
-{
-    "recipeList": [{"recipeId" : <integer>, "recipeName" : <string>}, ...],
+"recipeList": {
+    "recipes": [{"recipeId" : <integer>, "recipeName" : <string>}, ...],
+    "searchText" : <string>,
+    "message": <string>
 }
 
 
 view: recipe
-{
+"recipe": {
     "id" : <long>,
     "name" : <string>,
     "ingredientList" : [{"ingredientId" : <long>, "ingredientName" : <string>, "ingredientWeight" : integer}, ...],
@@ -82,13 +89,15 @@ view: recipe
 
 
 view: volume_list
-{
-    "volumeList": [{"volumeId" : <integer>, "volumeName" : <string>}, ...],
+"volumeList": {
+    "volumes": [{"volumeId" : <integer>, "volumeName" : <string>}, ...],
+    "searchText" : <string>,
+    "message": <string>
 }
 
 
 view: volume
-{
+"volume": {
     "id" : <long>,
     "name" : <string>,
     "value" : <float>

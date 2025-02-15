@@ -23,6 +23,6 @@ public class SearchSourcesMapper {
 		List<SearchSourcesElement> searchSourcesElements = sourceEntities.stream()
 				.map(this::toSearchSourcesElement)
 				.collect(Collectors.toList());
-		return new SearchSourcesDTO(searchSourcesElements, message);
+		return new SearchSourcesDTO(searchSourcesElements, "", message);
 	}
 }

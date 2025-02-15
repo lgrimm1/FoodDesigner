@@ -31,6 +31,7 @@ class SearchSourcesMapperTest {
 
 		SearchSourcesDTO actualSearchSourcesDTO = mapper.toSearchSourcesDTO(sourceEntities, message);
 		assertEquals(searchSourcesElements, actualSearchSourcesDTO.getSources());
+		assertTrue(actualSearchSourcesDTO.getSearchText().isEmpty());
 		assertEquals(message, actualSearchSourcesDTO.getMessage());
 	}
 }

@@ -1,16 +1,19 @@
 view: source_list
 "sourceList": {
-    "message": <string>,
     "sources": [{"sourceId" : <integer>, "sourceName" : <string>}, ...],
+    "message": <string>
 }
 
 
 view: source
-{
-    "id" : <long>,
-    "name" : <string>,
-    "webshop" : <string>,
-    "open" : <string>
+"source": {
+    "source": {
+        "id" : <long>,
+        "name" : <string>,
+        "webshop" : <string>,
+        "open" : <string>
+    },
+    "message": <string>
 }
 
 

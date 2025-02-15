@@ -1,53 +1,70 @@
-SERVICE                     ENDPOINT                        RESPONSE VIEW
--------------------------------------------------------------------------
-root                        GET /                           source_list
+SERVICE                     ENDPOINT                            REQUEST VIEW        RESPONSE VIEW
+-------------------------------------------------------------------------------------------------
+root                        GET /                                                   source_list
 source
 ../query
-../../listsources           GET /source/list                    source_list
-../../searchsources         GET /source/search/{name}           source_list
-../../findsource            GET /source/{id}                    source
+../../listsources           GET /source/list                                        source_list
+../../searchsources         GET /source/search/{name}           source_list         source_list
+../../findsource            GET /source/{id}                    source_list         source
+../../findsource            GET /source/{id}                    source_list         source_list
 ../manipulation
-../../addsource             POST /source                        source_list
-../../modifysource          PUT /source/{id}                    source
-../../deletesource          DELETE /source/{id}                 source_list
+../../newsource             GET /source/new                     source_list         source
+../../addsource             POST /source                        source              source_list
+../../modifysource          PUT /source/{id}                    source              source
+../../deletesource          DELETE /source/{id}                 source              source_list
+../../deletesource          DELETE /source/{id}                 source_list         source_list
 subingredient
 ../query
-../../listsubingredients    GET /subingredient/list             subingredient_list
-../../searchsubingredients  GET /subingredient/search/{name}    subingredient_list
-../../findsubingredient     GET /subingredient/{id}             subingredient
+../../listsubingredients    GET /subingredient/list                                 subingredient_list
+../../searchsubingredients  GET /subingredient/search/{name}    subingredient_list  subingredient_list
+../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient
+../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient_list
 ../manipulation
-../../addsubingredient      POST /subingredient                 subingredient_list
-../../modifysubingredient   PUT /subingredient/{id}             subingredient
-../../deletesubingredient   DELETE /subingredient/{id}          subingredient_list
+../../newsubingredient      GET /subingredient/new              subingredient_list  subingredient
+../../addsubingredient      POST /subingredient                 subingredient       subingredient_list
+../../modifysubingredient   PUT /subingredient/{id}             subingredient       subingredient
+../../deletesubingredient   DELETE /subingredient/{id}          subingredient       subingredient_list
+../../deletesubingredient   DELETE /subingredient/{id}          subingredient_list  subingredient_list
 ingredient
 ../query
-../../listingredients       GET /ingredient/list                ingredient_list
-../../searchingredients     GET /ingredient/search/{name}       ingredient_list
-../../findingredient        GET /ingredient/{id}                ingredient
+../../listingredients       GET /ingredient/list                                    ingredient_list
+../../searchingredients     GET /ingredient/search/{name}       ingredient_list     ingredient_list
+../../findingredient        GET /ingredient/{id}                ingredient_list     ingredient
+../../findingredient        GET /ingredient/{id}                ingredient_list     ingredient_list
 ../manipulation
-../../addingredient         POST /ingredient                    ingredient_list
-../../modifyingredient      PUT /ingredient/{id}                ingredient
-../../deleteingredient      DELETE /ingredient/{id}             ingredient_list
+../../newingredient         GET /ingredient/new                 ingredient_list     ingredient
+../../addingredient         POST /ingredient                    ingredient          ingredient_list
+../../modifyingredient      PUT /ingredient/{id}                ingredient          ingredient
+../../deleteingredient      DELETE /ingredient/{id}             ingredient          ingredient_list
+../../deleteingredient      DELETE /ingredient/{id}             ingredient_list     ingredient_list
 recipe
 ../query
-../../listrecipes           GET /recipe/list                    recipe_list
-../../searchrecipes         GET /recipe/search/{name}           recipe_list
-../../findrecipe            GET /recipe/{id}                    recipe
+../../listrecipes           GET /recipe/list                                        recipe_list
+../../searchrecipes         GET /recipe/search/{name}           recipe_list         recipe_list
+../../findrecipe            GET /recipe/{id}                    recipe_list         recipe
+../../findrecipe            GET /recipe/{id}                    recipe_list         recipe_list
 ../manipulation
-../../addrecipe             POST /recipe                        recipe_list
-../../modifyrecipe          PUT /recipe/{id}                    recipe
-../../deleterecipe          DELETE /recipe/{id}                 recipe_list
+../../newrecipe             GET /recipe/new                     recipe_list         recipe
+../../addrecipe             POST /recipe                        recipe              recipe_list
+../../modifyrecipe          PUT /recipe/{id}                    recipe              recipe
+../../deleterecipe          DELETE /recipe/{id}                 recipe              recipe_list
+../../deleterecipe          DELETE /recipe/{id}                 recipe_list         recipe_list
 volume
 ../query
-../../listvolumes           GET /volume/list                    volume_list
-../../searchvolumes         GET /volume/search/{name}           volume_list
-../../findvolume            GET /volume/{id}                    volume
+../../listvolumes           GET /volume/list                                        volume_list
+../../searchvolumes         GET /volume/search/{name}           volume_list         volume_list
+../../findvolume            GET /volume/{id}                    volume_list         volume
+../../findvolume            GET /volume/{id}                    volume_list         volume_list
 ../manipulation
-../../addvolume             POST /volume                        volume_list
-../../modifyvolume          PUT /volume/{id}                    volume
-../../deletevolume          DELETE /volume/{id}                 volume_list
+../../newvolume             GET /volume/new                     volume_list         volume
+../../addvolume             POST /volume                        volume              volume_list
+../../modifyvolume          PUT /volume/{id}                    volume              volume
+../../deletevolume          DELETE /volume/{id}                 volume              volume_list
+../../deletevolume          DELETE /volume/{id}                 volume_list         volume_list
 generator
-../generaterecipe           GET /generator/recipe/{id}          recipe_page
-../generaterecipedata       GET /generator/recipedata/{id}      recipe_data
+../generaterecipe           GET /generator/recipe/{id}          recipe_list         recipe_page
+../generaterecipe           GET /generator/recipe/{id}          recipe_data         recipe_page
+../generaterecipedata       GET /generator/recipedata/{id}      recipe_list         recipe_data
+../generaterecipedata       GET /generator/recipedata/{id}      recipe_page         recipe_data
 calculator
 ../?

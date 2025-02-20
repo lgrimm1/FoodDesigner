@@ -20,9 +20,9 @@ public class FindSourceService {
 	public FindSourceDTO findSource(long id) {
 		Optional<SourceEntity> entity = repository.findById(id);
 		if (entity.isPresent()) {
-			return mapper.toFindSourcesDTO(entity.get(), "");
+			return mapper.toFindSourceDTO(entity.get(), "");
 		}
-		return mapper.toFindSourcesDTO(new SourceEntity(), "No such source was found.");
+		return mapper.toFindSourceDTO(new SourceEntity(), "No such source was found.");
 	}
 
 	public ListSourcesDTO listSources(String message) {

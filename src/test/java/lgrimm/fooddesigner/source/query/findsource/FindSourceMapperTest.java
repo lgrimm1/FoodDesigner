@@ -3,7 +3,6 @@ package lgrimm.fooddesigner.source.query.findsource;
 import lgrimm.fooddesigner.domain.*;
 //import org.aspectj.bridge.*;
 import org.junit.jupiter.api.*;
-import org.springframework.orm.jpa.support.*;
 
 import java.util.*;
 
@@ -12,15 +11,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class FindSourceMapperTest {
 
 	@Test
-	void toFindSourcesDTO() {
+	void toFindSourceDTO() {
 		SourceEntity entity = new SourceEntity(12L, "name", "webshop", "openHours");
 		String message = "message";
 		FindSourceMapper mapper = new FindSourceMapper();
 
-		assertThrows(IllegalArgumentException.class, () -> mapper.toFindSourcesDTO(null, message));
-		assertThrows(IllegalArgumentException.class, () -> mapper.toFindSourcesDTO(entity, null));
+		assertThrows(IllegalArgumentException.class, () -> mapper.toFindSourceDTO(null, message));
+		assertThrows(IllegalArgumentException.class, () -> mapper.toFindSourceDTO(entity, null));
 
-		FindSourceDTO findSourceDTO = mapper.toFindSourcesDTO(entity, message);
+		FindSourceDTO findSourceDTO = mapper.toFindSourceDTO(entity, message);
 		assertEquals(entity.getId(), findSourceDTO.getSource().getId());
 		assertEquals(entity.getName(), findSourceDTO.getSource().getName());
 		assertEquals(entity.getWebShop(), findSourceDTO.getSource().getWebShop());
@@ -37,11 +36,11 @@ class FindSourceMapperTest {
 		sourceEntities.add(sourceEntity2);
 		String message = "message";
 
-		ListSourcesElement listSourcesElement1 = new ListSourcesElement(1L, "name1");
-		ListSourcesElement listSourcesElement2 = new ListSourcesElement(2L, "name2");
-		List<ListSourcesElement> listSourcesElements = new ArrayList<>();
-		listSourcesElements.add(listSourcesElement1);
-		listSourcesElements.add(listSourcesElement2);
+		ListSourcesElement listRecipesElement1 = new ListSourcesElement(1L, "name1");
+		ListSourcesElement listRecipesElement2 = new ListSourcesElement(2L, "name2");
+		List<ListSourcesElement> listRecipesElements = new ArrayList<>();
+		listRecipesElements.add(listRecipesElement1);
+		listRecipesElements.add(listRecipesElement2);
 
 		FindSourceMapper mapper = new FindSourceMapper();
 
@@ -49,7 +48,7 @@ class FindSourceMapperTest {
 		assertThrows(IllegalArgumentException.class, () -> mapper.toListSourcesDTO(sourceEntities, null));
 
 		ListSourcesDTO actualListSourcesDTO = mapper.toListSourcesDTO(sourceEntities, message);
-		assertEquals(listSourcesElements, actualListSourcesDTO.getSources());
+		assertEquals(listRecipesElements, actualListSourcesDTO.getSources());
 		assertEquals(message, actualListSourcesDTO.getMessage());
 	}
 }

@@ -6,19 +6,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import lgrimm.fooddesigner.domain.*;
 import org.junit.jupiter.api.*;
-import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.*;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.*;
 import org.springframework.test.web.servlet.*;
-import org.springframework.web.servlet.*;
 
 import java.util.*;
 
 import static org.mockito.Mockito.when;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @WebMvcTest(FindSourceController.class)
 @AutoConfigureDataJpa

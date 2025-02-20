@@ -8,7 +8,7 @@ import java.util.stream.*;
 
 @Component
 public class FindSourceMapper {
-	public FindSourceDTO toFindSourcesDTO(SourceEntity sourceEntity, String message) {
+	public FindSourceDTO toFindSourceDTO(SourceEntity sourceEntity, String message) {
 		if (sourceEntity == null || message == null) {
 			throw new IllegalArgumentException();
 		}
@@ -26,9 +26,9 @@ public class FindSourceMapper {
 		if (sourceEntities == null || message == null) {
 			throw new IllegalArgumentException();
 		}
-		List<ListSourcesElement> listSourcesElements = sourceEntities.stream()
+		List<ListSourcesElement> listRecipesElements = sourceEntities.stream()
 				.map(this::toListSourcesElement)
 				.collect(Collectors.toList());
-		return new ListSourcesDTO(listSourcesElements, message);
+		return new ListSourcesDTO(listRecipesElements, message);
 	}
 }

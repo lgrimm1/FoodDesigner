@@ -17,8 +17,8 @@ x   ../../findsource            GET /source/{id}                    source_list 
 
     subingredient
     ../query
- x  ../../listsubingredients    GET /subingredient/list                                 subingredient_list
-    ../../searchsubingredients  GET /subingredient/search/{name}    subingredient_list  subingredient_list
+x   ../../listsubingredients    GET /subingredient/list                                 subingredient_list
+-   ../../searchsubingredients  GET /subingredient/search/{name}    subingredient_list  subingredient_list
     ../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient
     ../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient_list
     ../manipulation

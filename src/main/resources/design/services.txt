@@ -56,7 +56,7 @@ x   ../../listrecipes           GET /recipe/list                                
 
     volume
     ../query
-    ../../listvolumes           GET /volume/list                                        volume_list
+x   ../../listvolumes           GET /volume/list                                        volume_list
     ../../searchvolumes         GET /volume/search/{name}           volume_list         volume_list
     ../../findvolume            GET /volume/{id}                    volume_list         volume
     ../../findvolume            GET /volume/{id}                    volume_list         volume_list

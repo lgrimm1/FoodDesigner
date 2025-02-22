@@ -18,7 +18,7 @@ x   ../../findsource            GET /source/{id}                    source_list 
     subingredient
     ../query
 x   ../../listsubingredients    GET /subingredient/list                                 subingredient_list
--   ../../searchsubingredients  GET /subingredient/search/{name}    subingredient_list  subingredient_list
+x   ../../searchsubingredients  GET /subingredient/search/{name}    subingredient_list  subingredient_list
     ../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient
     ../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient_list
     ../manipulation
@@ -31,7 +31,7 @@ x   ../../listsubingredients    GET /subingredient/list                         
     ingredient
     ../query
 x   ../../listingredients       GET /ingredient/list                                    ingredient_list
-    ../../searchingredients     GET /ingredient/search/{name}       ingredient_list     ingredient_list
+x   ../../searchingredients     GET /ingredient/search/{name}       ingredient_list     ingredient_list
     ../../findingredient        GET /ingredient/{id}                ingredient_list     ingredient
     ../../findingredient        GET /ingredient/{id}                ingredient_list     ingredient_list
     ../manipulation

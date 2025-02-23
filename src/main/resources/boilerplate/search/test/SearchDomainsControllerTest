@@ -1,0 +1,46 @@
+/*
+1. Generate the test file via IDE
+2. Copy-paste the boilerplate code
+3. Change the next words to correct ones and in the next order:
+	- Domains
+	- Domain
+	- domain
+4. Add these imports to the import section:
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+*/
+
+@WebMvcTest(SearchDomainsController.class)
+@AutoConfigureDataJpa
+class SearchDomainsControllerTest {
+
+	@Autowired
+	private MockMvc mockMvc;
+	@MockitoBean
+	private SearchDomainsService service;
+
+	@Test
+	void searchDomains() throws Exception {
+		SearchDomainsElement searchDomainsElement1 = new SearchDomainsElement(1L, "name1");
+		SearchDomainsElement searchDomainsElement2 = new SearchDomainsElement(2L, "name2");
+		List<SearchDomainsElement> searchDomainsElements = new ArrayList<>();
+		searchDomainsElements.add(searchDomainsElement1);
+		searchDomainsElements.add(searchDomainsElement2);
+		String message = "message";
+		SearchDomainsDTO searchDomainsDTO = new SearchDomainsDTO(searchDomainsElements, "", message);
+		String text = "text";
+		when(service.searchDomains(text))
+				.thenReturn(searchDomainsDTO);
+
+		mockMvc
+				.perform(
+						get("/domain/search/" + text)
+				)
+				.andExpect(status().isOk())
+				.andDo(print())
+				.andExpect(view().name("domain_list"))
+				.andExpect(model().size(1))
+				.andExpect(model().attribute("domainList", searchDomainsDTO));
+	}
+}

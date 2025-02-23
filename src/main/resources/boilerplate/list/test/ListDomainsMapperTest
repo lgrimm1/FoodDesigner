@@ -1,0 +1,34 @@
+/*
+1. Generate the test file via IDE
+2. Copy-paste the boilerplate code
+3. Change the next words to correct ones and in the next order:
+	- Domains
+	- Domain
+	- domain
+*/
+
+class ListDomainsMapperTest {
+	@Test
+	void toListDomainsDTO() {
+		DomainEntity domainEntity1 = new DomainEntity(1L, "name1", "webshop1", "openHours1");
+		DomainEntity domainEntity2 = new DomainEntity(2L, "name2", "webshop2", "openHours2");
+		List<DomainEntity> domainEntities = new ArrayList<>();
+		domainEntities.add(domainEntity1);
+		domainEntities.add(domainEntity2);
+
+		ListDomainsElement listDomainsElement1 = new ListDomainsElement(1L, "name1");
+		ListDomainsElement listDomainsElement2 = new ListDomainsElement(2L, "name2");
+		List<ListDomainsElement> listDomainsElements = new ArrayList<>();
+		listDomainsElements.add(listDomainsElement1);
+		listDomainsElements.add(listDomainsElement2);
+
+		ListDomainsMapper mapper = new ListDomainsMapper();
+
+		assertThrows(IllegalArgumentException.class, () -> mapper.toListDomainsDTO(null));
+
+		ListDomainsDTO actualListDomainsDTO = mapper.toListDomainsDTO(domainEntities);
+		assertEquals(listDomainsElements, actualListDomainsDTO.getDomains());
+		assertTrue(actualListDomainsDTO.getSearchText().isEmpty());
+		assertTrue(actualListDomainsDTO.getMessage().isEmpty());
+	}
+}

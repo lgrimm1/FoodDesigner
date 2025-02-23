@@ -1,0 +1,37 @@
+/*
+1. Generate the test file via IDE
+2. Copy-paste the boilerplate code
+3. Change the next words to correct ones and in the next order:
+	- Domains
+	- Domain
+	- domain
+*/
+
+class SearchDomainsMapperTest {
+
+	@Test
+	void toSearchDomainsDTO() {
+		DomainEntity domainEntity1 = new DomainEntity(1L, "name1", "webshop1", "openHours1");
+		DomainEntity domainEntity2 = new DomainEntity(2L, "name2", "webshop2", "openHours2");
+		List<DomainEntity> domainEntities = new ArrayList<>();
+		domainEntities.add(domainEntity1);
+		domainEntities.add(domainEntity2);
+		String message = "message";
+
+		SearchDomainsElement searchDomainsElement1 = new SearchDomainsElement(1L, "name1");
+		SearchDomainsElement searchDomainsElement2 = new SearchDomainsElement(2L, "name2");
+		List<SearchDomainsElement> searchDomainsElements = new ArrayList<>();
+		searchDomainsElements.add(searchDomainsElement1);
+		searchDomainsElements.add(searchDomainsElement2);
+
+		SearchDomainsMapper mapper = new SearchDomainsMapper();
+
+		assertThrows(IllegalArgumentException.class, () -> mapper.toSearchDomainsDTO(null, message));
+		assertThrows(IllegalArgumentException.class, () -> mapper.toSearchDomainsDTO(domainEntities, null));
+
+		SearchDomainsDTO actualSearchDomainsDTO = mapper.toSearchDomainsDTO(domainEntities, message);
+		assertEquals(searchDomainsElements, actualSearchDomainsDTO.getDomains());
+		assertTrue(actualSearchDomainsDTO.getSearchText().isEmpty());
+		assertEquals(message, actualSearchDomainsDTO.getMessage());
+	}
+}

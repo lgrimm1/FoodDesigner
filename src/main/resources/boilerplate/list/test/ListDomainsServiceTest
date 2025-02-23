@@ -1,0 +1,40 @@
+/*
+1. Generate the test file via IDE
+2. Copy-paste the boilerplate code
+3. Change the next words to correct ones and in the next order:
+	- Domains
+	- Domain
+	- domain
+*/
+
+class ListDomainsServiceTest {
+
+	@Test
+	void listDomains() {
+		DomainEntity domainEntity1 = new DomainEntity(1L, "name1", "webShop1", "openHours1");
+		DomainEntity domainEntity2 = new DomainEntity(2L, "name2", "webShop2", "openHours2");
+
+		List<DomainEntity> domainEntities = new ArrayList<>();
+		domainEntities.add(domainEntity1);
+		domainEntities.add(domainEntity2);
+		DomainRepository repository = Mockito.mock(DomainRepository.class);
+		when(repository.findAll())
+				.thenReturn(domainEntities);
+
+		ListDomainsElement listDomainsElement1 = new ListDomainsElement(1L, "name1");
+		ListDomainsElement listDomainsElement2 = new ListDomainsElement(2L, "name2");
+		List<ListDomainsElement> listDomainsElements = new ArrayList<>();
+		listDomainsElements.add(listDomainsElement1);
+		listDomainsElements.add(listDomainsElement2);
+		ListDomainsDTO listDomainsDTO = new ListDomainsDTO(listDomainsElements, "", "");
+		ListDomainsMapper mapper = Mockito.mock(ListDomainsMapper.class);
+		when(mapper.toListDomainsDTO(domainEntities))
+				.thenReturn(listDomainsDTO);
+
+		ListDomainsService service = new ListDomainsService(repository, mapper);
+		ListDomainsDTO actualListDomainsDTO = service.listDomains();
+		assertEquals(listDomainsElements, actualListDomainsDTO.getDomains());
+		assertTrue(actualListDomainsDTO.getSearchText().isEmpty());
+		assertTrue(actualListDomainsDTO.getMessage().isEmpty());
+	}
+}

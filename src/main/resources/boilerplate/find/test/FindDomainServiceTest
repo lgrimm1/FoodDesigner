@@ -1,0 +1,74 @@
+/*
+1. Generate the test file via IDE
+2. Copy-paste the boilerplate code
+3. Change the next words to correct ones and in the next order:
+	- Domains
+	- Domain
+	- domain
+*/
+
+class FindDomainServiceTest {
+
+	@Test
+	void noSuchDomain() {
+		DomainEntity emptyEntity = new DomainEntity();
+		DomainRepository repository = Mockito.mock(DomainRepository.class);
+		when(repository.findById(6L))
+				.thenReturn(Optional.empty());
+
+		FindDomainDTO notFoundDomainDTO = new FindDomainDTO(emptyEntity, "No such domain was found.");
+		FindDomainMapper mapper = Mockito.mock(FindDomainMapper.class);
+		when(mapper.toFindDomainDTO(emptyEntity, "No such domain was found."))
+				.thenReturn(notFoundDomainDTO);
+
+		FindDomainService service = new FindDomainService(repository, mapper);
+		FindDomainDTO actualDomainDTO = service.findDomain(6L);
+		assertEquals(notFoundDomainDTO, actualDomainDTO);
+	}
+
+	@Test
+	void foundDomain() {
+		DomainEntity foundEntity = new DomainEntity(12L, "name", "webshop", "openHours");
+		DomainRepository repository = Mockito.mock(DomainRepository.class);
+		when(repository.findById(12L))
+				.thenReturn(Optional.of(foundEntity));
+
+		FindDomainDTO foundDomainDTO = new FindDomainDTO(foundEntity, "");
+		FindDomainMapper mapper = Mockito.mock(FindDomainMapper.class);
+		when(mapper.toFindDomainDTO(foundEntity, ""))
+				.thenReturn(foundDomainDTO);
+
+		FindDomainService service = new FindDomainService(repository, mapper);
+		FindDomainDTO actualDTO = service.findDomain(12L);
+		assertEquals(foundDomainDTO, actualDTO);
+	}
+
+	@Test
+	void listDomains() {
+		DomainEntity domainEntity1 = new DomainEntity(1L, "name1", "webshop1", "openHours1");
+		DomainEntity domainEntity2 = new DomainEntity(2L, "name2", "webshop2", "openHours2");
+		String message = "message";
+
+		List<DomainEntity> domainEntities = new ArrayList<>();
+		domainEntities.add(domainEntity1);
+		domainEntities.add(domainEntity2);
+		DomainRepository repository = Mockito.mock(DomainRepository.class);
+		when(repository.findAll())
+				.thenReturn(domainEntities);
+
+		ListDomainsElement listRecipesElement1 = new ListDomainsElement(1L, "name1");
+		ListDomainsElement listRecipesElement2 = new ListDomainsElement(2L, "name2");
+		List<ListDomainsElement> listRecipesElements = new ArrayList<>();
+		listRecipesElements.add(listRecipesElement1);
+		listRecipesElements.add(listRecipesElement2);
+		ListDomainsDTO listDomainsDTO = new ListDomainsDTO(listRecipesElements, message);
+		FindDomainMapper mapper = Mockito.mock(FindDomainMapper.class);
+		when(mapper.toListDomainsDTO(domainEntities, message))
+				.thenReturn(listDomainsDTO);
+
+		FindDomainService service = new FindDomainService(repository, mapper);
+		ListDomainsDTO actualListDomainsDTO1 = service.listDomains(message);
+		assertEquals(listRecipesElements, actualListDomainsDTO1.getDomains());
+		assertEquals(message, actualListDomainsDTO1.getMessage());
+	}
+}

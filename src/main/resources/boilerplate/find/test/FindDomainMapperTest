@@ -1,0 +1,53 @@
+/*
+1. Generate the test file via IDE
+2. Copy-paste the boilerplate code
+3. Change the next words to correct ones and in the next order:
+	- Domains
+	- Domain
+	- domain
+*/
+
+class FindDomainMapperTest {
+
+	@Test
+	void toFindDomainDTO() {
+		DomainEntity entity = new DomainEntity(12L, "name", "webshop", "openHours");
+		String message = "message";
+		FindDomainMapper mapper = new FindDomainMapper();
+
+		assertThrows(IllegalArgumentException.class, () -> mapper.toFindDomainDTO(null, message));
+		assertThrows(IllegalArgumentException.class, () -> mapper.toFindDomainDTO(entity, null));
+
+		FindDomainDTO findDomainDTO = mapper.toFindDomainDTO(entity, message);
+		assertEquals(entity.getId(), findDomainDTO.getDomain().getId());
+		assertEquals(entity.getName(), findDomainDTO.getDomain().getName());
+		assertEquals(entity.getWebShop(), findDomainDTO.getDomain().getWebShop());
+		assertEquals(entity.getOpenHours(), findDomainDTO.getDomain().getOpenHours());
+		assertEquals(message, findDomainDTO.getMessage());
+	}
+
+	@Test
+	void toListDomainsDTO() {
+		DomainEntity domainEntity1 = new DomainEntity(1L, "name1", "webshop1", "openHours1");
+		DomainEntity domainEntity2 = new DomainEntity(2L, "name2", "webshop2", "openHours2");
+		List<DomainEntity> domainEntities = new ArrayList<>();
+		domainEntities.add(domainEntity1);
+		domainEntities.add(domainEntity2);
+		String message = "message";
+
+		ListDomainsElement listRecipesElement1 = new ListDomainsElement(1L, "name1");
+		ListDomainsElement listRecipesElement2 = new ListDomainsElement(2L, "name2");
+		List<ListDomainsElement> listRecipesElements = new ArrayList<>();
+		listRecipesElements.add(listRecipesElement1);
+		listRecipesElements.add(listRecipesElement2);
+
+		FindDomainMapper mapper = new FindDomainMapper();
+
+		assertThrows(IllegalArgumentException.class, () -> mapper.toListDomainsDTO(null, message));
+		assertThrows(IllegalArgumentException.class, () -> mapper.toListDomainsDTO(domainEntities, null));
+
+		ListDomainsDTO actualListDomainsDTO = mapper.toListDomainsDTO(domainEntities, message);
+		assertEquals(listRecipesElements, actualListDomainsDTO.getDomains());
+		assertEquals(message, actualListDomainsDTO.getMessage());
+	}
+}

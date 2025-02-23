@@ -19,7 +19,7 @@ x   ../../findsource            GET /source/{id}                    source_list 
     ../query
 x   ../../listsubingredients    GET /subingredient/list                                 subingredient_list
 x   ../../searchsubingredients  GET /subingredient/search/{name}    subingredient_list  subingredient_list
-    ../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient
+x   ../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient
     ../../findsubingredient     GET /subingredient/{id}             subingredient_list  subingredient_list
     ../manipulation
     ../../newsubingredient      GET /subingredient/new              subingredient_list  subingredient
@@ -32,7 +32,7 @@ x   ../../searchsubingredients  GET /subingredient/search/{name}    subingredien
     ../query
 x   ../../listingredients       GET /ingredient/list                                    ingredient_list
 x   ../../searchingredients     GET /ingredient/search/{name}       ingredient_list     ingredient_list
-    ../../findingredient        GET /ingredient/{id}                ingredient_list     ingredient
+-   ../../findingredient        GET /ingredient/{id}                ingredient_list     ingredient
     ../../findingredient        GET /ingredient/{id}                ingredient_list     ingredient_list
     ../manipulation
     ../../newingredient         GET /ingredient/new                 ingredient_list     ingredient
@@ -57,7 +57,7 @@ x   ../../searchrecipes         GET /recipe/search/{name}           recipe_list 
     volume
     ../query
 x   ../../listvolumes           GET /volume/list                                        volume_list
-+   ../../searchvolumes         GET /volume/search/{name}           volume_list         volume_list
+x   ../../searchvolumes         GET /volume/search/{name}           volume_list         volume_list
     ../../findvolume            GET /volume/{id}                    volume_list         volume
     ../../findvolume            GET /volume/{id}                    volume_list         volume_list
     ../manipulation

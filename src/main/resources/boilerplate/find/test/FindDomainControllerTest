@@ -11,63 +11,63 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 */
 
-@WebMvcTest(FindSourceController.class)
+@WebMvcTest(FindDomainController.class)
 @AutoConfigureDataJpa
-class FindSourceControllerTest {
+class FindDomainControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 	@MockitoBean
-	private FindSourceService service;
+	private FindDomainService service;
 
 	@Test
-	void findSourceWithExistingSource() throws Exception {
-		SourceEntity sourceEntity = new SourceEntity(12L, "name", "webshop", "openHours");
+	void findDomainWithExistingDomain() throws Exception {
+		DomainEntity domainEntity = new DomainEntity(12L, "name", "webshop", "openHours");
 		String message = "";
-		FindSourceDTO findSourceDTO = new FindSourceDTO(sourceEntity, message);
-		when(service.findSource(12L))
-				.thenReturn(findSourceDTO);
+		FindDomainDTO findDomainDTO = new FindDomainDTO(domainEntity, message);
+		when(service.findDomain(12L))
+				.thenReturn(findDomainDTO);
 
-		FindSourceController controller = new FindSourceController(service);
+		FindDomainController controller = new FindDomainController(service);
 
 		mockMvc
 				.perform(
-						get("/source/12")
+						get("/domain/12")
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("source"))
+				.andExpect(view().name("domain"))
 				.andExpect(model().size(1))
-				.andExpect(model().attribute("source", findSourceDTO));
+				.andExpect(model().attribute("domain", findDomainDTO));
 	}
 
 	@Test
-	void findSourceWithNotExistingSource() throws Exception {
-		SourceEntity source = new SourceEntity();
+	void findDomainWithNotExistingDomain() throws Exception {
+		DomainEntity domain = new DomainEntity();
 		String message = "message";
-		FindSourceDTO findSourceDTO = new FindSourceDTO(source, message);
-		when(service.findSource(12L))
-				.thenReturn(findSourceDTO);
+		FindDomainDTO findDomainDTO = new FindDomainDTO(domain, message);
+		when(service.findDomain(12L))
+				.thenReturn(findDomainDTO);
 
-		ListSourcesElement element1 = new ListSourcesElement(1L, "name1");
-		ListSourcesElement element2 = new ListSourcesElement(2L, "name2");
-		List<ListSourcesElement> sources = new ArrayList<>();
-		sources.add(element1);
-		sources.add(element2);
-		ListSourcesDTO listSourcesDTO = new ListSourcesDTO(sources, message);
-		when(service.listSources(message))
-				.thenReturn(listSourcesDTO);
+		ListDomainsElement element1 = new ListDomainsElement(1L, "name1");
+		ListDomainsElement element2 = new ListDomainsElement(2L, "name2");
+		List<ListDomainsElement> domains = new ArrayList<>();
+		domains.add(element1);
+		domains.add(element2);
+		ListDomainsDTO listDomainsDTO = new ListDomainsDTO(domains, message);
+		when(service.listDomains(message))
+				.thenReturn(listDomainsDTO);
 
-		FindSourceController controller = new FindSourceController(service);
+		FindDomainController controller = new FindDomainController(service);
 
 		mockMvc
 				.perform(
-						get("/source/12")
+						get("/domain/12")
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("source_list"))
+				.andExpect(view().name("domain_list"))
 				.andExpect(model().size(1))
-				.andExpect(model().attribute("sourceList", listSourcesDTO));
+				.andExpect(model().attribute("domainList", listDomainsDTO));
 	}
 }

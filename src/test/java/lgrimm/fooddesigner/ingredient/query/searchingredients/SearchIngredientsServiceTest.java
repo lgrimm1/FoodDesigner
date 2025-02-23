@@ -56,7 +56,7 @@ class SearchIngredientsServiceTest {
 	void searchIngredientsOneWord() {
 		IngredientEntity ingredientEntity1 = new IngredientEntity(
 				1L,
-				"name1",
+				"name",
 				List.of(1L, 2L),
 				"extraAllergens1",
 				12.3D,
@@ -78,7 +78,7 @@ class SearchIngredientsServiceTest {
 				111.1D);
 		IngredientEntity ingredientEntity2 = new IngredientEntity(
 				2L,
-				"name2",
+				"name",
 				List.of(2l, 2L),
 				"extraAllergens2",
 				22.3D,
@@ -128,7 +128,7 @@ class SearchIngredientsServiceTest {
 	void searchIngredientsMoreWordsWithMoreSpacesBetween() {
 		IngredientEntity ingredientEntity1 = new IngredientEntity(
 				1L,
-				"name1",
+				"name",
 				List.of(1L, 2L),
 				"extraAllergens1",
 				12.3D,
@@ -150,7 +150,7 @@ class SearchIngredientsServiceTest {
 				111.1D);
 		IngredientEntity ingredientEntity2 = new IngredientEntity(
 				2L,
-				"name2",
+				"name",
 				List.of(2l, 2L),
 				"extraAllergens2",
 				22.3D,
@@ -172,7 +172,7 @@ class SearchIngredientsServiceTest {
 				112.2D);
 		IngredientEntity ingredientEntity3 = new IngredientEntity(
 				3L,
-				"name3",
+				"xyz",
 				List.of(3L, 3L),
 				"extraAllergens3",
 				12.3D,
@@ -194,7 +194,7 @@ class SearchIngredientsServiceTest {
 				111.1D);
 		IngredientEntity ingredientEntity4 = new IngredientEntity(
 				4L,
-				"name4",
+				"name   xyz",
 				List.of(2l, 2L),
 				"extraAllergens4",
 				22.3D,

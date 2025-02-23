@@ -86,7 +86,7 @@ class SearchSourcesServiceTest {
 	void searchSourcesMoreWordsWithMoreSpacesBetween() {
 		SourceEntity sourceEntity1 = new SourceEntity(1L, "name", "webshop1", "openHours1");
 		SourceEntity sourceEntity2 = new SourceEntity(2L, "name", "webshop2", "openHours2");
-		SourceEntity sourceEntity3 = new SourceEntity(3L, "xzy", "webshop3", "openHours3");
+		SourceEntity sourceEntity3 = new SourceEntity(3L, "xyz", "webshop3", "openHours3");
 		SourceEntity sourceEntity4 = new SourceEntity(4L, "name   xyz", "webshop4", "openHours4");
 		List<SourceEntity> sourceEntities = new ArrayList<>();
 		sourceEntities.add(sourceEntity1);

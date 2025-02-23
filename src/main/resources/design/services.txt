@@ -44,7 +44,7 @@ x   ../../searchingredients     GET /ingredient/search/{name}       ingredient_l
     recipe
     ../query
 x   ../../listrecipes           GET /recipe/list                                        recipe_list
-    ../../searchrecipes         GET /recipe/search/{name}           recipe_list         recipe_list
+-   ../../searchrecipes         GET /recipe/search/{name}           recipe_list         recipe_list
     ../../findrecipe            GET /recipe/{id}                    recipe_list         recipe
     ../../findrecipe            GET /recipe/{id}                    recipe_list         recipe_list
     ../manipulation

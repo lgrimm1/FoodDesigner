@@ -86,7 +86,7 @@ class SearchSubIngredientsServiceTest {
 	void searchSubIngredientsMoreWordsWithMoreSpacesBetween() {
 		SubIngredientEntity subIngredientEntity1 = new SubIngredientEntity(1L, "name", "allergen1");
 		SubIngredientEntity subIngredientEntity2 = new SubIngredientEntity(2L, "name", "allergen2");
-		SubIngredientEntity subIngredientEntity3 = new SubIngredientEntity(3L, "xzy", "allergen3");
+		SubIngredientEntity subIngredientEntity3 = new SubIngredientEntity(3L, "xyz", "allergen3");
 		SubIngredientEntity subIngredientEntity4 = new SubIngredientEntity(4L, "name   xyz", "allergen4");
 		List<SubIngredientEntity> subIngredientEntities = new ArrayList<>();
 		subIngredientEntities.add(subIngredientEntity1);

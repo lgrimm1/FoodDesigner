@@ -38,11 +38,11 @@ class SearchSourcesServiceTest {
 	void searchSourcesNoMatch() {
 		SourceRepository repository = Mockito.mock(SourceRepository.class);
 		when(repository.findAllByName("name"))
-				.thenReturn(new ArrayList<SourceEntity>());
+				.thenReturn(new ArrayList<>());
 
-		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(new ArrayList<SearchSourcesElement>(), "", "Found 0 occurrence(s).");
+		SearchSourcesDTO searchSourcesDTO = new SearchSourcesDTO(new ArrayList<>(), "", "Found 0 occurrence(s).");
 		SearchSourcesMapper mapper = Mockito.mock(SearchSourcesMapper.class);
-		when(mapper.toSearchSourcesDTO(new ArrayList<SourceEntity>(), "Found 0 occurrence(s)."))
+		when(mapper.toSearchSourcesDTO(new ArrayList<>(), "Found 0 occurrence(s)."))
 				.thenReturn(searchSourcesDTO);
 
 		SearchSourcesService service = new SearchSourcesService(repository, mapper);
@@ -54,8 +54,8 @@ class SearchSourcesServiceTest {
 
 	@Test
 	void searchSourcesOneWord() {
-		SourceEntity sourceEntity1 = new SourceEntity(1L, "name", "webshop1", "openHours1");
-		SourceEntity sourceEntity2 = new SourceEntity(2L, "name", "webshop2", "openHours2");
+		SourceEntity sourceEntity1 = new SourceEntity(1L, "name", "webShop1", "openHours1");
+		SourceEntity sourceEntity2 = new SourceEntity(2L, "name", "webShop2", "openHours2");
 		List<SourceEntity> sourceEntities = new ArrayList<>();
 		sourceEntities.add(sourceEntity1);
 		sourceEntities.add(sourceEntity2);
@@ -84,10 +84,10 @@ class SearchSourcesServiceTest {
 
 	@Test
 	void searchSourcesMoreWordsWithMoreSpacesBetween() {
-		SourceEntity sourceEntity1 = new SourceEntity(1L, "name", "webshop1", "openHours1");
-		SourceEntity sourceEntity2 = new SourceEntity(2L, "name", "webshop2", "openHours2");
-		SourceEntity sourceEntity3 = new SourceEntity(3L, "xyz", "webshop3", "openHours3");
-		SourceEntity sourceEntity4 = new SourceEntity(4L, "name   xyz", "webshop4", "openHours4");
+		SourceEntity sourceEntity1 = new SourceEntity(1L, "name", "webShop1", "openHours1");
+		SourceEntity sourceEntity2 = new SourceEntity(2L, "name", "webShop2", "openHours2");
+		SourceEntity sourceEntity3 = new SourceEntity(3L, "xyz", "webShop3", "openHours3");
+		SourceEntity sourceEntity4 = new SourceEntity(4L, "name   xyz", "webShop4", "openHours4");
 		List<SourceEntity> sourceEntities = new ArrayList<>();
 		sourceEntities.add(sourceEntity1);
 		sourceEntities.add(sourceEntity2);
@@ -126,8 +126,8 @@ class SearchSourcesServiceTest {
 
 	@Test
 	void listSources() {
-		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webshop1", "openHours1");
-		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webshop2", "openHours2");
+		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webShop1", "openHours1");
+		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webShop2", "openHours2");
 		List<SourceEntity> sourceEntities = new ArrayList<>();
 		sourceEntities.add(sourceEntity1);
 		sourceEntities.add(sourceEntity2);

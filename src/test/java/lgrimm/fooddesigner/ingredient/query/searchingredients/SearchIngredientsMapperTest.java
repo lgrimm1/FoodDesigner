@@ -11,7 +11,7 @@ class SearchIngredientsMapperTest {
 
 	@Test
 	void toSearchIngredientsDTO() {
-		IngredientEntity ingredientEntity1 = new IngredientEntity(
+		IngredientEntity entity1 = new IngredientEntity(
 				1L,
 				"name1",
 				List.of(11L, 12L),
@@ -33,7 +33,7 @@ class SearchIngredientsMapperTest {
 				118,
 				119,
 				120);
-		IngredientEntity ingredientEntity2 = new IngredientEntity(
+		IngredientEntity entity2 = new IngredientEntity(
 				2L,
 				"name2",
 				List.of(21L, 22L),
@@ -56,8 +56,8 @@ class SearchIngredientsMapperTest {
 				219,
 				220);
 		List<IngredientEntity> ingredientEntities = new ArrayList<>();
-		ingredientEntities.add(ingredientEntity1);
-		ingredientEntities.add(ingredientEntity2);
+		ingredientEntities.add(entity1);
+		ingredientEntities.add(entity2);
 		String message = "message";
 
 		SearchIngredientsElement searchIngredientsElement1 = new SearchIngredientsElement(1L, "name1");

@@ -12,7 +12,7 @@ class FindSourceMapperTest {
 
 	@Test
 	void toFindSourceDTO() {
-		SourceEntity entity = new SourceEntity(12L, "name", "webshop", "openHours");
+		SourceEntity entity = new SourceEntity(12L, "name", "webShop", "openHours");
 		String message = "message";
 		FindSourceMapper mapper = new FindSourceMapper();
 
@@ -29,8 +29,8 @@ class FindSourceMapperTest {
 
 	@Test
 	void toListSourcesDTO() {
-		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webshop1", "openHours1");
-		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webshop2", "openHours2");
+		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webShop1", "openHours1");
+		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webShop2", "openHours2");
 		List<SourceEntity> sourceEntities = new ArrayList<>();
 		sourceEntities.add(sourceEntity1);
 		sourceEntities.add(sourceEntity2);

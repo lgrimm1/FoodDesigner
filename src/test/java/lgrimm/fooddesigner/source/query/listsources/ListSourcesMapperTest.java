@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ListSourcesMapperTest {
 	@Test
 	void toListSourcesDTO() {
-		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webshop1", "openHours1");
-		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webshop2", "openHours2");
+		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webShop1", "openHours1");
+		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webShop2", "openHours2");
 		List<SourceEntity> sourceEntities = new ArrayList<>();
 		sourceEntities.add(sourceEntity1);
 		sourceEntities.add(sourceEntity2);

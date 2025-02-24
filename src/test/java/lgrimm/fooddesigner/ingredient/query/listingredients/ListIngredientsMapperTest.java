@@ -9,9 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ListIngredientsMapperTest {
 
-	@Test
-	void toListIngredientsDTO() {
-		IngredientEntity ingredientEntity1 = new IngredientEntity(
+	IngredientEntity entity1;
+	IngredientEntity entity2;
+
+	@BeforeEach
+	void setFields() {
+		entity1 = new IngredientEntity(
 				1L,
 				"name1",
 				List.of(1L, 2L),
@@ -29,14 +32,14 @@ class ListIngredientsMapperTest {
 				3L,
 				"productName1",
 				"productManufacturer1",
-				"productDecription1",
+				"productDescription1",
 				4,
 				101.1D,
 				111.1D);
-		IngredientEntity ingredientEntity2 = new IngredientEntity(
+		entity2 = new IngredientEntity(
 				2L,
 				"name2",
-				List.of(2l, 2L),
+				List.of(2L, 2L),
 				"extraAllergens2",
 				22.3D,
 				22,
@@ -51,13 +54,17 @@ class ListIngredientsMapperTest {
 				3L,
 				"productName2",
 				"productManufacturer2",
-				"productDecription2",
+				"productDescription2",
 				4,
 				102.2D,
 				112.2D);
+	}
+
+	@Test
+	void toListIngredientsDTO() {
 		List<IngredientEntity> ingredientEntities = new ArrayList<>();
-		ingredientEntities.add(ingredientEntity1);
-		ingredientEntities.add(ingredientEntity2);
+		ingredientEntities.add(entity1);
+		ingredientEntities.add(entity2);
 
 		ListIngredientsElement listIngredientsElement1 = new ListIngredientsElement(1L, "name1");
 		ListIngredientsElement listIngredientsElement2 = new ListIngredientsElement(2L, "name2");

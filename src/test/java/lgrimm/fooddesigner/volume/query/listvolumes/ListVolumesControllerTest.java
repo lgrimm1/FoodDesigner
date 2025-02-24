@@ -14,8 +14,6 @@ import org.springframework.test.web.servlet.*;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @WebMvcTest(ListVolumesController.class)
 @AutoConfigureDataJpa
 class ListVolumesControllerTest {

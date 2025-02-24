@@ -38,11 +38,11 @@ class SearchRecipesServiceTest {
 	void searchRecipesNoMatch() {
 		RecipeRepository repository = Mockito.mock(RecipeRepository.class);
 		when(repository.findAllByName("name"))
-				.thenReturn(new ArrayList<RecipeEntity>());
+				.thenReturn(new ArrayList<>());
 
-		SearchRecipesDTO searchRecipesDTO = new SearchRecipesDTO(new ArrayList<SearchRecipesElement>(), "", "Found 0 occurrence(s).");
+		SearchRecipesDTO searchRecipesDTO = new SearchRecipesDTO(new ArrayList<>(), "", "Found 0 occurrence(s).");
 		SearchRecipesMapper mapper = Mockito.mock(SearchRecipesMapper.class);
-		when(mapper.toSearchRecipesDTO(new ArrayList<RecipeEntity>(), "Found 0 occurrence(s)."))
+		when(mapper.toSearchRecipesDTO(new ArrayList<>(), "Found 0 occurrence(s)."))
 				.thenReturn(searchRecipesDTO);
 
 		SearchRecipesService service = new SearchRecipesService(repository, mapper);

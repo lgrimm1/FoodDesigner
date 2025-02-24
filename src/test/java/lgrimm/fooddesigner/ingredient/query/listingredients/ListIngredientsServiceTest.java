@@ -10,10 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class ListIngredientsServiceTest {
+	IngredientEntity entity1;
+	IngredientEntity entity2;
 
-	@Test
-	void listIngredients() {
-		IngredientEntity ingredientEntity1 = new IngredientEntity(
+	@BeforeEach
+	void setFields() {
+		entity1 = new IngredientEntity(
 				1L,
 				"name1",
 				List.of(1L, 2L),
@@ -31,14 +33,14 @@ class ListIngredientsServiceTest {
 				3L,
 				"productName1",
 				"productManufacturer1",
-				"productDecription1",
+				"productDescription1",
 				4,
 				101.1D,
 				111.1D);
-		IngredientEntity ingredientEntity2 = new IngredientEntity(
+		entity2 = new IngredientEntity(
 				2L,
 				"name2",
-				List.of(2l, 2L),
+				List.of(2L, 2L),
 				"extraAllergens2",
 				22.3D,
 				22,
@@ -53,13 +55,17 @@ class ListIngredientsServiceTest {
 				3L,
 				"productName2",
 				"productManufacturer2",
-				"productDecription2",
+				"productDescription2",
 				4,
 				102.2D,
 				112.2D);
+	}
+
+	@Test
+	void listIngredients() {
 		List<IngredientEntity> ingredientEntities = new ArrayList<>();
-		ingredientEntities.add(ingredientEntity1);
-		ingredientEntities.add(ingredientEntity2);
+		ingredientEntities.add(entity1);
+		ingredientEntities.add(entity2);
 		IngredientRepository repository = Mockito.mock(IngredientRepository.class);
 		when(repository.findAll())
 				.thenReturn(ingredientEntities);

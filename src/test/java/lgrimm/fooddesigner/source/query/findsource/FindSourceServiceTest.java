@@ -30,7 +30,7 @@ class FindSourceServiceTest {
 
 	@Test
 	void foundSource() {
-		SourceEntity foundEntity = new SourceEntity(12L, "name", "webshop", "openHours");
+		SourceEntity foundEntity = new SourceEntity(12L, "name", "webShop", "openHours");
 		SourceRepository repository = Mockito.mock(SourceRepository.class);
 		when(repository.findById(12L))
 				.thenReturn(Optional.of(foundEntity));
@@ -47,8 +47,8 @@ class FindSourceServiceTest {
 
 	@Test
 	void listSources() {
-		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webshop1", "openHours1");
-		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webshop2", "openHours2");
+		SourceEntity sourceEntity1 = new SourceEntity(1L, "name1", "webShop1", "openHours1");
+		SourceEntity sourceEntity2 = new SourceEntity(2L, "name2", "webShop2", "openHours2");
 		String message = "message";
 
 		List<SourceEntity> sourceEntities = new ArrayList<>();

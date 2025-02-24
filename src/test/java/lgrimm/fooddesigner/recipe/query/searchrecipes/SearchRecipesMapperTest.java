@@ -14,7 +14,7 @@ class SearchRecipesMapperTest {
 		RecipeEntity recipeEntity1 = new RecipeEntity(
 				1L,
 				"name1",
-				List.of(11L, 12l),
+				List.of(11L, 12L),
 				List.of(13, 14),
 				"notes1",
 				"steps1",
@@ -23,7 +23,7 @@ class SearchRecipesMapperTest {
 		RecipeEntity recipeEntity2 = new RecipeEntity(
 				2L,
 				"name2",
-				List.of(21L, 22l),
+				List.of(21L, 22L),
 				List.of(23, 24),
 				"notes2",
 				"steps2",

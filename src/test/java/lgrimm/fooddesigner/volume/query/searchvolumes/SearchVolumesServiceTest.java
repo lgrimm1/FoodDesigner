@@ -38,11 +38,11 @@ class SearchVolumesServiceTest {
 	void searchVolumesNoMatch() {
 		VolumeRepository repository = Mockito.mock(VolumeRepository.class);
 		when(repository.findAllByName("name"))
-				.thenReturn(new ArrayList<VolumeEntity>());
+				.thenReturn(new ArrayList<>());
 
-		SearchVolumesDTO searchVolumesDTO = new SearchVolumesDTO(new ArrayList<SearchVolumesElement>(), "", "Found 0 occurrence(s).");
+		SearchVolumesDTO searchVolumesDTO = new SearchVolumesDTO(new ArrayList<>(), "", "Found 0 occurrence(s).");
 		SearchVolumesMapper mapper = Mockito.mock(SearchVolumesMapper.class);
-		when(mapper.toSearchVolumesDTO(new ArrayList<VolumeEntity>(), "Found 0 occurrence(s)."))
+		when(mapper.toSearchVolumesDTO(new ArrayList<>(), "Found 0 occurrence(s)."))
 				.thenReturn(searchVolumesDTO);
 
 		SearchVolumesService service = new SearchVolumesService(repository, mapper);

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RecipeEntityTest {
 
 	@Test
-	void contructors() {
+	void constructors() {
 		RecipeEntity recipeEntity = new RecipeEntity();
 		assertEquals(0, recipeEntity.getId());
 		assertNull(recipeEntity.getName());

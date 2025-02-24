@@ -11,6 +11,149 @@ import static org.mockito.Mockito.when;
 
 class SearchIngredientsServiceTest {
 
+	IngredientEntity entity1;
+	IngredientEntity entity2;
+	IngredientEntity entity3;
+	IngredientEntity entity4;
+	IngredientEntity entity5;
+	IngredientEntity entity6;
+
+	@BeforeEach
+	void setFields() {
+		entity1 = new IngredientEntity(
+				1L,
+				"name",
+				List.of(1L, 2L),
+				"extraAllergens1",
+				12.3D,
+				11,
+				12,
+				31.1D,
+				41.4D,
+				51.5D,
+				61.6D,
+				71.7D,
+				81.8D,
+				91.9D,
+				3L,
+				"productName1",
+				"productManufacturer1",
+				"productDescription1",
+				4,
+				101.1D,
+				111.1D);
+		entity2 = new IngredientEntity(
+				2L,
+				"name",
+				List.of(2L, 2L),
+				"extraAllergens2",
+				22.3D,
+				22,
+				22,
+				32.2D,
+				42.4D,
+				52.5D,
+				62.6D,
+				72.7D,
+				82.8D,
+				92.9D,
+				3L,
+				"productName2",
+				"productManufacturer2",
+				"productDescription2",
+				4,
+				102.2D,
+				112.2D);
+		entity3 = new IngredientEntity(
+				3L,
+				"xyz",
+				List.of(3L, 3L),
+				"extraAllergens3",
+				12.3D,
+				11,
+				12,
+				31.1D,
+				41.4D,
+				51.5D,
+				61.6D,
+				71.7D,
+				81.8D,
+				91.9D,
+				3L,
+				"productName1",
+				"productManufacturer1",
+				"productDescription1",
+				4,
+				101.1D,
+				111.1D);
+		entity4 = new IngredientEntity(
+				4L,
+				"name   xyz",
+				List.of(2L, 2L),
+				"extraAllergens4",
+				22.3D,
+				22,
+				22,
+				32.2D,
+				42.4D,
+				52.5D,
+				62.6D,
+				72.7D,
+				82.8D,
+				92.9D,
+				3L,
+				"productName2",
+				"productManufacturer2",
+				"productDescription2",
+				4,
+				102.2D,
+				112.2D);
+		entity5 = new IngredientEntity(
+				1L,
+				"name1",
+				List.of(1L, 2L),
+				"extraAllergens1",
+				12.3D,
+				11,
+				12,
+				31.1D,
+				41.4D,
+				51.5D,
+				61.6D,
+				71.7D,
+				81.8D,
+				91.9D,
+				3L,
+				"productName1",
+				"productManufacturer1",
+				"productDescription1",
+				4,
+				101.1D,
+				111.1D);
+		entity6 = new IngredientEntity(
+				2L,
+				"name2",
+				List.of(2L, 2L),
+				"extraAllergens2",
+				22.3D,
+				22,
+				22,
+				32.2D,
+				42.4D,
+				52.5D,
+				62.6D,
+				72.7D,
+				82.8D,
+				92.9D,
+				3L,
+				"productName2",
+				"productManufacturer2",
+				"productDescription2",
+				4,
+				102.2D,
+				112.2D);
+	}
+
 	@Test
 	void searchIngredientsNullArgument() {
 		SearchIngredientsMapper mapper = Mockito.mock(SearchIngredientsMapper.class);
@@ -38,11 +181,11 @@ class SearchIngredientsServiceTest {
 	void searchIngredientsNoMatch() {
 		IngredientRepository repository = Mockito.mock(IngredientRepository.class);
 		when(repository.findAllByName("name"))
-				.thenReturn(new ArrayList<IngredientEntity>());
+				.thenReturn(new ArrayList<>());
 
-		SearchIngredientsDTO searchIngredientsDTO = new SearchIngredientsDTO(new ArrayList<SearchIngredientsElement>(), "", "Found 0 occurrence(s).");
+		SearchIngredientsDTO searchIngredientsDTO = new SearchIngredientsDTO(new ArrayList<>(), "", "Found 0 occurrence(s).");
 		SearchIngredientsMapper mapper = Mockito.mock(SearchIngredientsMapper.class);
-		when(mapper.toSearchIngredientsDTO(new ArrayList<IngredientEntity>(), "Found 0 occurrence(s)."))
+		when(mapper.toSearchIngredientsDTO(new ArrayList<>(), "Found 0 occurrence(s)."))
 				.thenReturn(searchIngredientsDTO);
 
 		SearchIngredientsService service = new SearchIngredientsService(repository, mapper);
@@ -54,53 +197,9 @@ class SearchIngredientsServiceTest {
 
 	@Test
 	void searchIngredientsOneWord() {
-		IngredientEntity ingredientEntity1 = new IngredientEntity(
-				1L,
-				"name",
-				List.of(1L, 2L),
-				"extraAllergens1",
-				12.3D,
-				11,
-				12,
-				31.1D,
-				41.4D,
-				51.5D,
-				61.6D,
-				71.7D,
-				81.8D,
-				91.9D,
-				3L,
-				"productName1",
-				"productManufacturer1",
-				"productDecription1",
-				4,
-				101.1D,
-				111.1D);
-		IngredientEntity ingredientEntity2 = new IngredientEntity(
-				2L,
-				"name",
-				List.of(2l, 2L),
-				"extraAllergens2",
-				22.3D,
-				22,
-				22,
-				32.2D,
-				42.4D,
-				52.5D,
-				62.6D,
-				72.7D,
-				82.8D,
-				92.9D,
-				3L,
-				"productName2",
-				"productManufacturer2",
-				"productDecription2",
-				4,
-				102.2D,
-				112.2D);
 		List<IngredientEntity> ingredientEntities = new ArrayList<>();
-		ingredientEntities.add(ingredientEntity1);
-		ingredientEntities.add(ingredientEntity2);
+		ingredientEntities.add(entity1);
+		ingredientEntities.add(entity2);
 		IngredientRepository repository = Mockito.mock(IngredientRepository.class);
 		when(repository.findAllByName("name"))
 				.thenReturn(ingredientEntities);
@@ -126,99 +225,11 @@ class SearchIngredientsServiceTest {
 
 	@Test
 	void searchIngredientsMoreWordsWithMoreSpacesBetween() {
-		IngredientEntity ingredientEntity1 = new IngredientEntity(
-				1L,
-				"name",
-				List.of(1L, 2L),
-				"extraAllergens1",
-				12.3D,
-				11,
-				12,
-				31.1D,
-				41.4D,
-				51.5D,
-				61.6D,
-				71.7D,
-				81.8D,
-				91.9D,
-				3L,
-				"productName1",
-				"productManufacturer1",
-				"productDecription1",
-				4,
-				101.1D,
-				111.1D);
-		IngredientEntity ingredientEntity2 = new IngredientEntity(
-				2L,
-				"name",
-				List.of(2l, 2L),
-				"extraAllergens2",
-				22.3D,
-				22,
-				22,
-				32.2D,
-				42.4D,
-				52.5D,
-				62.6D,
-				72.7D,
-				82.8D,
-				92.9D,
-				3L,
-				"productName2",
-				"productManufacturer2",
-				"productDecription2",
-				4,
-				102.2D,
-				112.2D);
-		IngredientEntity ingredientEntity3 = new IngredientEntity(
-				3L,
-				"xyz",
-				List.of(3L, 3L),
-				"extraAllergens3",
-				12.3D,
-				11,
-				12,
-				31.1D,
-				41.4D,
-				51.5D,
-				61.6D,
-				71.7D,
-				81.8D,
-				91.9D,
-				3L,
-				"productName1",
-				"productManufacturer1",
-				"productDecription1",
-				4,
-				101.1D,
-				111.1D);
-		IngredientEntity ingredientEntity4 = new IngredientEntity(
-				4L,
-				"name   xyz",
-				List.of(2l, 2L),
-				"extraAllergens4",
-				22.3D,
-				22,
-				22,
-				32.2D,
-				42.4D,
-				52.5D,
-				62.6D,
-				72.7D,
-				82.8D,
-				92.9D,
-				3L,
-				"productName2",
-				"productManufacturer2",
-				"productDecription2",
-				4,
-				102.2D,
-				112.2D);
 		List<IngredientEntity> ingredientEntities = new ArrayList<>();
-		ingredientEntities.add(ingredientEntity1);
-		ingredientEntities.add(ingredientEntity2);
-		ingredientEntities.add(ingredientEntity3);
-		ingredientEntities.add(ingredientEntity4);
+		ingredientEntities.add(entity1);
+		ingredientEntities.add(entity2);
+		ingredientEntities.add(entity3);
+		ingredientEntities.add(entity4);
 		IngredientRepository repository = Mockito.mock(IngredientRepository.class);
 		when(repository.findAllByName("name   xyz"))
 				.thenReturn(ingredientEntities.subList(3, 4));
@@ -252,53 +263,9 @@ class SearchIngredientsServiceTest {
 
 	@Test
 	void listIngredients() {
-		IngredientEntity ingredientEntity1 = new IngredientEntity(
-				1L,
-				"name1",
-				List.of(1L, 2L),
-				"extraAllergens1",
-				12.3D,
-				11,
-				12,
-				31.1D,
-				41.4D,
-				51.5D,
-				61.6D,
-				71.7D,
-				81.8D,
-				91.9D,
-				3L,
-				"productName1",
-				"productManufacturer1",
-				"productDecription1",
-				4,
-				101.1D,
-				111.1D);
-		IngredientEntity ingredientEntity2 = new IngredientEntity(
-				2L,
-				"name2",
-				List.of(2l, 2L),
-				"extraAllergens2",
-				22.3D,
-				22,
-				22,
-				32.2D,
-				42.4D,
-				52.5D,
-				62.6D,
-				72.7D,
-				82.8D,
-				92.9D,
-				3L,
-				"productName2",
-				"productManufacturer2",
-				"productDecription2",
-				4,
-				102.2D,
-				112.2D);
 		List<IngredientEntity> ingredientEntities = new ArrayList<>();
-		ingredientEntities.add(ingredientEntity1);
-		ingredientEntities.add(ingredientEntity2);
+		ingredientEntities.add(entity5);
+		ingredientEntities.add(entity6);
 		IngredientRepository repository = Mockito.mock(IngredientRepository.class);
 		when(repository.findAll())
 				.thenReturn(ingredientEntities);

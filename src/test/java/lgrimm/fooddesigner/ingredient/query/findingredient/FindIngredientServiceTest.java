@@ -11,6 +11,57 @@ import static org.mockito.Mockito.when;
 
 class FindIngredientServiceTest {
 
+	IngredientEntity entity1;
+	IngredientEntity entity2;
+
+	@BeforeEach
+	void setFields() {
+		entity1 = new IngredientEntity(
+				1L,
+				"name1",
+				List.of(1L, 2L),
+				"extraAllergens1",
+				12.3D,
+				11,
+				12,
+				31.1D,
+				41.4D,
+				51.5D,
+				61.6D,
+				71.7D,
+				81.8D,
+				91.9D,
+				3L,
+				"productName1",
+				"productManufacturer1",
+				"productDescription1",
+				4,
+				101.1D,
+				111.1D);
+		entity2 = new IngredientEntity(
+				2L,
+				"name2",
+				List.of(2L, 2L),
+				"extraAllergens2",
+				22.3D,
+				22,
+				22,
+				32.2D,
+				42.4D,
+				52.5D,
+				62.6D,
+				72.7D,
+				82.8D,
+				92.9D,
+				3L,
+				"productName2",
+				"productManufacturer2",
+				"productDescription2",
+				4,
+				102.2D,
+				112.2D);
+	}
+
 	@Test
 	void noSuchIngredient() {
 		IngredientEntity emptyEntity = new IngredientEntity();
@@ -30,93 +81,27 @@ class FindIngredientServiceTest {
 
 	@Test
 	void foundIngredient() {
-		IngredientEntity foundEntity = new IngredientEntity(
-				1L,
-				"name1",
-				List.of(1L, 2L),
-				"extraAllergens1",
-				12.3D,
-				11,
-				12,
-				31.1D,
-				41.4D,
-				51.5D,
-				61.6D,
-				71.7D,
-				81.8D,
-				91.9D,
-				3L,
-				"productName1",
-				"productManufacturer1",
-				"productDecription1",
-				4,
-				101.1D,
-				111.1D);
 		IngredientRepository repository = Mockito.mock(IngredientRepository.class);
-		when(repository.findById(12L))
-				.thenReturn(Optional.of(foundEntity));
+		when(repository.findById(2L))
+				.thenReturn(Optional.of(entity2));
 
-		FindIngredientDTO foundIngredientDTO = new FindIngredientDTO(foundEntity, "");
+		FindIngredientDTO foundIngredientDTO = new FindIngredientDTO(entity2, "");
 		FindIngredientMapper mapper = Mockito.mock(FindIngredientMapper.class);
-		when(mapper.toFindIngredientDTO(foundEntity, ""))
+		when(mapper.toFindIngredientDTO(entity2, ""))
 				.thenReturn(foundIngredientDTO);
 
 		FindIngredientService service = new FindIngredientService(repository, mapper);
-		FindIngredientDTO actualDTO = service.findIngredient(12L);
+		FindIngredientDTO actualDTO = service.findIngredient(2L);
 		assertEquals(foundIngredientDTO, actualDTO);
 	}
 
 	@Test
 	void listIngredients() {
-		IngredientEntity ingredientEntity1 = new IngredientEntity(
-				1L,
-				"name1",
-				List.of(1L, 2L),
-				"extraAllergens1",
-				12.3D,
-				11,
-				12,
-				31.1D,
-				41.4D,
-				51.5D,
-				61.6D,
-				71.7D,
-				81.8D,
-				91.9D,
-				3L,
-				"productName1",
-				"productManufacturer1",
-				"productDecription1",
-				4,
-				101.1D,
-				111.1D);
-		IngredientEntity ingredientEntity2 = new IngredientEntity(
-				2L,
-				"name2",
-				List.of(2L, 2L),
-				"extraAllergens2",
-				22.3D,
-				22,
-				22,
-				32.2D,
-				42.4D,
-				52.5D,
-				62.6D,
-				72.7D,
-				82.8D,
-				92.9D,
-				3L,
-				"productName2",
-				"productManufacturer2",
-				"productDecription2",
-				4,
-				102.2D,
-				112.2D);
 		String message = "message";
 
 		List<IngredientEntity> ingredientEntities = new ArrayList<>();
-		ingredientEntities.add(ingredientEntity1);
-		ingredientEntities.add(ingredientEntity2);
+		ingredientEntities.add(entity1);
+		ingredientEntities.add(entity2);
 		IngredientRepository repository = Mockito.mock(IngredientRepository.class);
 		when(repository.findAll())
 				.thenReturn(ingredientEntities);

@@ -38,7 +38,7 @@ class IngredientEntityTest {
 	void constructorWithoutIdWithNull() {
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				null,
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				"extra",
 				12.5D,
 				1000,
@@ -51,9 +51,9 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
@@ -73,16 +73,16 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
 		));
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				"name",
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				null,
 				12.5D,
 				1000,
@@ -95,16 +95,16 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
 		));
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				"name",
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				"extra",
 				12.5D,
 				1000,
@@ -118,15 +118,15 @@ class IngredientEntityTest {
 				70D,
 				36L,
 				null,
-				"pmanu",
-				"pdesc",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
 		));
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				"name",
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				"extra",
 				12.5D,
 				1000,
@@ -139,16 +139,16 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
+				"productName",
 				null,
-				"pdesc",
+				"productDescription",
 				100,
 				123D,
 				321D
 		));
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				"name",
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				"extra",
 				12.5D,
 				1000,
@@ -161,8 +161,8 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
+				"productName",
+				"productManufacturer",
 				null,
 				100,
 				123D,
@@ -187,9 +187,9 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
@@ -209,9 +209,9 @@ class IngredientEntityTest {
 		assertEquals(60D, ingredientEntity.getProteins());
 		assertEquals(70D, ingredientEntity.getSalt());
 		assertEquals(36L, ingredientEntity.getProductSourceId());
-		assertEquals("pname", ingredientEntity.getProductName());
-		assertEquals("pmanu", ingredientEntity.getProductManufacturer());
-		assertEquals("pdesc", ingredientEntity.getProductDescription());
+		assertEquals("productName", ingredientEntity.getProductName());
+		assertEquals("productManufacturer", ingredientEntity.getProductManufacturer());
+		assertEquals("productDescription", ingredientEntity.getProductDescription());
 		assertEquals(100, ingredientEntity.getProductWeight());
 		assertEquals(123D, ingredientEntity.getProductGrossPrice());
 		assertEquals(321D, ingredientEntity.getProductVatPercent());
@@ -222,7 +222,7 @@ class IngredientEntityTest {
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				12L,
 				null,
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				"extra",
 				12.5D,
 				1000,
@@ -235,9 +235,9 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
@@ -258,9 +258,9 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
@@ -268,7 +268,7 @@ class IngredientEntityTest {
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				12L,
 				"name",
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				null,
 				12.5D,
 				1000,
@@ -281,9 +281,9 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
@@ -291,7 +291,7 @@ class IngredientEntityTest {
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				12L,
 				"name",
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				"extra",
 				12.5D,
 				1000,
@@ -305,8 +305,8 @@ class IngredientEntityTest {
 				70D,
 				36L,
 				null,
-				"pmanu",
-				"pdesc",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
@@ -314,7 +314,7 @@ class IngredientEntityTest {
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				12L,
 				"name",
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				"extra",
 				12.5D,
 				1000,
@@ -327,9 +327,9 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
+				"productName",
 				null,
-				"pdesc",
+				"productDescription",
 				100,
 				123D,
 				321D
@@ -337,7 +337,7 @@ class IngredientEntityTest {
 		assertThrows(Exception.class, () -> new IngredientEntity(
 				12L,
 				"name",
-				new ArrayList<Long>(),
+				new ArrayList<>(),
 				"extra",
 				12.5D,
 				1000,
@@ -350,8 +350,8 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
+				"productName",
+				"productManufacturer",
 				null,
 				100,
 				123D,
@@ -377,9 +377,9 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D
@@ -399,9 +399,9 @@ class IngredientEntityTest {
 		assertEquals(60D, ingredientEntity.getProteins());
 		assertEquals(70D, ingredientEntity.getSalt());
 		assertEquals(36L, ingredientEntity.getProductSourceId());
-		assertEquals("pname", ingredientEntity.getProductName());
-		assertEquals("pmanu", ingredientEntity.getProductManufacturer());
-		assertEquals("pdesc", ingredientEntity.getProductDescription());
+		assertEquals("productName", ingredientEntity.getProductName());
+		assertEquals("productManufacturer", ingredientEntity.getProductManufacturer());
+		assertEquals("productDescription", ingredientEntity.getProductDescription());
 		assertEquals(100, ingredientEntity.getProductWeight());
 		assertEquals(123D, ingredientEntity.getProductGrossPrice());
 		assertEquals(321D, ingredientEntity.getProductVatPercent());
@@ -425,9 +425,9 @@ class IngredientEntityTest {
 				60D,
 				70D,
 				36L,
-				"pname",
-				"pmanu",
-				"pdesc",
+				"productName",
+				"productManufacturer",
+				"productDescription",
 				100,
 				123D,
 				321D

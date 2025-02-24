@@ -14,30 +14,30 @@ class SourceEntityTest {
 		assertNull(sourceEntity.getWebShop());
 		assertNull(sourceEntity.getOpenHours());
 
-		assertThrows(Exception.class, () -> new SourceEntity(null, "webshop", "open"));
+		assertThrows(Exception.class, () -> new SourceEntity(null, "webShop", "open"));
 		assertThrows(Exception.class, () -> new SourceEntity("name", null, "open"));
-		assertThrows(Exception.class, () -> new SourceEntity("name", "webshop", null));
+		assertThrows(Exception.class, () -> new SourceEntity("name", "webShop", null));
 
-		sourceEntity = new SourceEntity("name", "webshop", "open");
+		sourceEntity = new SourceEntity("name", "webShop", "open");
 		assertEquals(0, sourceEntity.getId());
 		assertEquals("name", sourceEntity.getName());
-		assertEquals("webshop", sourceEntity.getWebShop());
+		assertEquals("webShop", sourceEntity.getWebShop());
 		assertEquals("open", sourceEntity.getOpenHours());
 
-		assertThrows(Exception.class, () -> new SourceEntity(12L, null, "webshop", "open"));
+		assertThrows(Exception.class, () -> new SourceEntity(12L, null, "webShop", "open"));
 		assertThrows(Exception.class, () -> new SourceEntity(12L, "name", null, "open"));
-		assertThrows(Exception.class, () -> new SourceEntity(12L, "name", "webshop", null));
+		assertThrows(Exception.class, () -> new SourceEntity(12L, "name", "webShop", null));
 
-		sourceEntity = new SourceEntity(12L, "name", "webshop", "open");
+		sourceEntity = new SourceEntity(12L, "name", "webShop", "open");
 		assertEquals(12L, sourceEntity.getId());
 		assertEquals("name", sourceEntity.getName());
-		assertEquals("webshop", sourceEntity.getWebShop());
+		assertEquals("webShop", sourceEntity.getWebShop());
 		assertEquals("open", sourceEntity.getOpenHours());
 	}
 
 	@Test
 	void setters() {
-		SourceEntity sourceEntity = new SourceEntity(12L, "name", "webshop", "open");
+		SourceEntity sourceEntity = new SourceEntity(12L, "name", "webShop", "open");
 
 		assertThrows(Exception.class, () -> sourceEntity.setName(null));
 		assertThrows(Exception.class, () -> sourceEntity.setWebShop(null));

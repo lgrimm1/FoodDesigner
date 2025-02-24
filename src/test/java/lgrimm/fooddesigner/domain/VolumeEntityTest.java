@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VolumeEntityTest {
 
 	@Test
-	void contructors() {
+	void constructors() {
 		VolumeEntity volumeEntity = new VolumeEntity();
 		assertEquals(0, volumeEntity.getId());
 		assertNull(volumeEntity.getName());

@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.*;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(FindIngredientController.class)
@@ -46,7 +45,7 @@ class FindIngredientControllerTest {
 				3L,
 				"productName1",
 				"productManufacturer1",
-				"productDecription1",
+				"productDescription1",
 				4,
 				101.1D,
 				111.1D);

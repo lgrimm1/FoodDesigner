@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.*;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(SearchSourcesController.class)

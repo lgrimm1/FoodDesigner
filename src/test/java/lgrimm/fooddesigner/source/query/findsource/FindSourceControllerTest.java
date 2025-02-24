@@ -27,7 +27,7 @@ class FindSourceControllerTest {
 
 	@Test
 	void findSourceWithExistingSource() throws Exception {
-		SourceEntity sourceEntity = new SourceEntity(12L, "name", "webshop", "openHours");
+		SourceEntity sourceEntity = new SourceEntity(12L, "name", "webShop", "openHours");
 		String message = "";
 		FindSourceDTO findSourceDTO = new FindSourceDTO(sourceEntity, message);
 		when(service.findSource(12L))

@@ -9,9 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FindIngredientMapperTest {
 
-	@Test
-	void toFindIngredientDTO() {
-		IngredientEntity entity = new IngredientEntity(
+	IngredientEntity entity1;
+	IngredientEntity entity2;
+
+	@BeforeEach
+	void setFields() {
+		entity1 = new IngredientEntity(
 				1L,
 				"name1",
 				List.of(1L, 2L),
@@ -29,57 +32,11 @@ class FindIngredientMapperTest {
 				3L,
 				"productName1",
 				"productManufacturer1",
-				"productDecription1",
+				"productDescription1",
 				4,
 				101.1D,
 				111.1D);
-		String message = "message";
-		FindIngredientMapper mapper = new FindIngredientMapper();
-
-		assertThrows(IllegalArgumentException.class, () -> mapper.toFindIngredientDTO(null, message));
-		assertThrows(IllegalArgumentException.class, () -> mapper.toFindIngredientDTO(entity, null));
-
-		FindIngredientDTO findIngredientDTO = mapper.toFindIngredientDTO(entity, message);
-/*
-		assertEquals(entity.getId(), findIngredientDTO.getIngredient().getId());
-		assertEquals(entity.getName(), findIngredientDTO.getIngredient().getName());
-		assertEquals(entity.getSubIngredientIds(), findIngredientDTO.getIngredient().getSubIngredientIds());
-		assertEquals(entity.getExtraAllergens(), findIngredientDTO.getIngredient().getExtraAllergens());
-		assertEquals(entity.getDensity(), findIngredientDTO.getIngredient().getDensity());
-		assertEquals(entity.getEnergyKj(), findIngredientDTO.getIngredient().getEnergyKj());
-		assertEquals(entity.getEnergyKcal(), findIngredientDTO.getIngredient().getEnergyKcal());
-		assertEquals(entity.getTotalFats(), findIngredientDTO.getIngredient().getTotalFats());
-		assertEquals(entity.getSaturatedFats(), findIngredientDTO.getIngredient().getSaturatedFats());
-*/
-		assertEquals(entity, findIngredientDTO.getIngredient());
-		assertEquals(message, findIngredientDTO.getMessage());
-	}
-
-	@Test
-	void toListIngredientsDTO() {
-		IngredientEntity ingredientEntity1 = new IngredientEntity(
-				1L,
-				"name1",
-				List.of(1L, 2L),
-				"extraAllergens1",
-				12.3D,
-				11,
-				12,
-				31.1D,
-				41.4D,
-				51.5D,
-				61.6D,
-				71.7D,
-				81.8D,
-				91.9D,
-				3L,
-				"productName1",
-				"productManufacturer1",
-				"productDecription1",
-				4,
-				101.1D,
-				111.1D);
-		IngredientEntity ingredientEntity2 = new IngredientEntity(
+		entity2 = new IngredientEntity(
 				2L,
 				"name2",
 				List.of(2L, 2L),
@@ -97,13 +54,30 @@ class FindIngredientMapperTest {
 				3L,
 				"productName2",
 				"productManufacturer2",
-				"productDecription2",
+				"productDescription2",
 				4,
 				102.2D,
 				112.2D);
+	}
+
+	@Test
+	void toFindIngredientDTO() {
+		String message = "message";
+		FindIngredientMapper mapper = new FindIngredientMapper();
+
+		assertThrows(IllegalArgumentException.class, () -> mapper.toFindIngredientDTO(null, message));
+		assertThrows(IllegalArgumentException.class, () -> mapper.toFindIngredientDTO(entity1, null));
+
+		FindIngredientDTO findIngredientDTO = mapper.toFindIngredientDTO(entity1, message);
+		assertEquals(entity1, findIngredientDTO.getIngredient());
+		assertEquals(message, findIngredientDTO.getMessage());
+	}
+
+	@Test
+	void toListIngredientsDTO() {
 		List<IngredientEntity> ingredientEntities = new ArrayList<>();
-		ingredientEntities.add(ingredientEntity1);
-		ingredientEntities.add(ingredientEntity2);
+		ingredientEntities.add(entity1);
+		ingredientEntities.add(entity2);
 		String message = "message";
 
 		ListIngredientsElement listRecipesElement1 = new ListIngredientsElement(1L, "name1");

@@ -36,12 +36,15 @@ class ListRecipesControllerTest {
 
 		mockMvc
 				.perform(
-						get("/recipe/list")
+						get("/api/v1/recipe/list")
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("recipe_list"))
-				.andExpect(model().size(1))
-				.andExpect(model().attribute("recipeList", listRecipesDTO));
+				.andExpect(jsonPath("$.recipes[0].recipeId").value(listRecipesDTO.getRecipes().get(0).recipeId()))
+				.andExpect(jsonPath("$.recipes[0].recipeName").value(listRecipesDTO.getRecipes().get(0).recipeName()))
+				.andExpect(jsonPath("$.recipes[1].recipeId").value(listRecipesDTO.getRecipes().get(1).recipeId()))
+				.andExpect(jsonPath("$.recipes[1].recipeName").value(listRecipesDTO.getRecipes().get(1).recipeName()))
+				.andExpect(jsonPath("$.searchText").value(listRecipesDTO.getSearchText()))
+				.andExpect(jsonPath("$.message").value(listRecipesDTO.getMessage()));
 	}
 }

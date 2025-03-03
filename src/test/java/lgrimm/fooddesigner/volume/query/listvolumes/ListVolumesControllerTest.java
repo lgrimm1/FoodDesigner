@@ -36,13 +36,15 @@ class ListVolumesControllerTest {
 
 		mockMvc
 				.perform(
-						get("/volume/list")
-
+						get("/api/v1/volume/list")
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("volume_list"))
-				.andExpect(model().size(1))
-				.andExpect(model().attribute("volumeList", listVolumesDTO));
+				.andExpect(jsonPath("$.volumes[0].volumeId").value(listVolumesDTO.getVolumes().get(0).volumeId()))
+				.andExpect(jsonPath("$.volumes[0].volumeName").value(listVolumesDTO.getVolumes().get(0).volumeName()))
+				.andExpect(jsonPath("$.volumes[1].volumeId").value(listVolumesDTO.getVolumes().get(1).volumeId()))
+				.andExpect(jsonPath("$.volumes[1].volumeName").value(listVolumesDTO.getVolumes().get(1).volumeName()))
+				.andExpect(jsonPath("$.searchText").value(listVolumesDTO.getSearchText()))
+				.andExpect(jsonPath("$.message").value(listVolumesDTO.getMessage()));
 	}
 }

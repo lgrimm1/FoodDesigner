@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 @RestController
+@RequestMapping("/api/v1")
 public class SearchSubIngredientsController {
 	private final SearchSubIngredientsService service;
 

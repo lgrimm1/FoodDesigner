@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 @RestController
+@RequestMapping("/api/v1")
 public class ListRecipesController {
 	private final ListRecipesService service;
 
@@ -15,8 +16,7 @@ public class ListRecipesController {
 	}
 
 	@GetMapping("/recipe/list")
-	public ModelAndView listRecipes(Model model) {
-		model.asMap().clear();
-		return new ModelAndView("recipe_list", "recipeList", service.listRecipes());
+	public ListRecipesDTO listRecipes() {
+		return service.listRecipes();
 	}
 }

@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.fasterxml.jackson.databind.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.*;
@@ -37,12 +38,15 @@ class ListSourcesControllerTest {
 
 		mockMvc
 				.perform(
-						get("/source/list")
+						get("/api/v1/source/list")
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("source_list"))
-				.andExpect(model().size(1))
-				.andExpect(model().attribute("sourceList", listSourcesDTO));
+				.andExpect(jsonPath("$.sources[0].sourceId").value(listSourcesDTO.getSources().get(0).sourceId()))
+				.andExpect(jsonPath("$.sources[0].sourceName").value(listSourcesDTO.getSources().get(0).sourceName()))
+				.andExpect(jsonPath("$.sources[1].sourceId").value(listSourcesDTO.getSources().get(1).sourceId()))
+				.andExpect(jsonPath("$.sources[1].sourceName").value(listSourcesDTO.getSources().get(1).sourceName()))
+				.andExpect(jsonPath("$.searchText").value(listSourcesDTO.getSearchText()))
+				.andExpect(jsonPath("$.message").value(listSourcesDTO.getMessage()));
 	}
 }

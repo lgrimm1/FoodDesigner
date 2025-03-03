@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 @RestController
+@RequestMapping("/api/v1")
 public class RootController {
 	private final RootService service;
 
@@ -14,9 +15,8 @@ public class RootController {
 		this.service = service;
 	}
 
-	@GetMapping("/")
-	public ModelAndView getRoot(Model model) {
-		model.asMap().clear();
-		return new ModelAndView("recipe_list", "recipeList", service.getRoot());
+	@GetMapping("/root")
+	public RootDTO getRoot() {
+		return service.getRoot();
 	}
 }

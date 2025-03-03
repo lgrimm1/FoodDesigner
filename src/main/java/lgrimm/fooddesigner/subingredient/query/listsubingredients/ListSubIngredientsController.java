@@ -1,11 +1,13 @@
 package lgrimm.fooddesigner.subingredient.query.listsubingredients;
 
+import lgrimm.fooddesigner.ingredient.query.searchingredients.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 @RestController
+@RequestMapping("/api/v1")
 public class ListSubIngredientsController {
 	private final ListSubIngredientsService service;
 
@@ -15,8 +17,7 @@ public class ListSubIngredientsController {
 	}
 
 	@GetMapping("/subingredient/list")
-	public ModelAndView listSubIngredients(Model model) {
-		model.asMap().clear();
-		return new ModelAndView("subingredient_list", "subIngredientList", service.listSubIngredients());
+	public ListSubIngredientsDTO listSubIngredients() {
+		return service.listSubIngredients();
 	}
 }

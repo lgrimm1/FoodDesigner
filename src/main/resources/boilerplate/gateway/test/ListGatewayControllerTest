@@ -1,0 +1,46 @@
+/*
+1. Generate the test file via IDE
+2. Add these imports to the import section:
+    import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+    import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+    import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+3. Copy-paste these before the class header:
+    @WebMvcTest(ListGatewayController.class)
+    @AutoConfigureDataJpa
+4. Copy-paste these to the field definition session:
+	@Autowired
+	private MockMvc mockMvc;
+	@MockitoBean
+	private RestTemplate restTemplate;
+5. If there must be a gateway service class injection, add these lines to the class field section:
+    @MockitoBean
+    private ListGatewayService service;
+ 6. Add a new test:
+        Generate a test method for the endpoint
+        Copy-paste the method boilerplate to the method body
+        Change the next words to correct ones and in the next order:
+	        Domains
+	        Domain
+	        domains
+	        domain
+*/
+
+		ListDomainsElement listDomainsElement1 = new ListDomainsElement(1L, "name1");
+		ListDomainsElement listDomainsElement2 = new ListDomainsElement(2L, "name2");
+		List<ListDomainsElement> listDomainsElements = new ArrayList<>();
+		listDomainsElements.add(listDomainsElement1);
+		listDomainsElements.add(listDomainsElement2);
+		ListDomainsDTO listDomainsDTO = new ListDomainsDTO(listDomainsElements, "", "");
+		ResponseEntity<ListDomainsDTO> responseEntity = new ResponseEntity<>(listDomainsDTO, HttpStatus.OK);
+		when(restTemplate.getForEntity("http://localhost:8080/api/v1/domain/list", ListDomainsDTO.class))
+				.thenReturn(responseEntity);
+
+		mockMvc
+				.perform(
+						get("/domain/list")
+				)
+				.andExpect(status().isOk())
+				.andDo(print())
+				.andExpect(view().name("domain_list"))
+				.andExpect(model().size(1))
+				.andExpect(model().attribute("domainList", listDomainsDTO));

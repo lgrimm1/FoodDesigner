@@ -7,7 +7,10 @@
 	- domain
 */
 
+import org.springframework.web.bind.annotation.*;
+
 @RestController
+@RequestMapping("/api/v1")
 public class ListDomainsController {
 	private final ListDomainsService service;
 
@@ -17,8 +20,7 @@ public class ListDomainsController {
 	}
 
 	@GetMapping("/domain/list")
-	public ModelAndView listDomains(Model model) {
-		model.asMap().clear();
-		return new ModelAndView("domain_list", "domainList", service.listDomains());
+	public ListDomainsDTO listDomains() {
+		return service.listDomains();
 	}
 }

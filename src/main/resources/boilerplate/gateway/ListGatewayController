@@ -1,0 +1,20 @@
+/*
+1. Add @RestController to the class
+2. Add the next bean to the field section:
+	@Autowired
+	private RestTemplate restTemplate;
+3. Copy-paste the code per external endpoint
+4. Change the next words to correct ones and in the next order:
+    Domains
+    Domain
+    domains
+    domain
+*/
+
+	@GetMapping("/domain/list")
+	public ModelAndView listDomains(Model model) {
+		model.asMap().clear();
+		String internalServiceUrl = "http://localhost:8080/api/v1/domain/list";
+		ResponseEntity<ListDomainsDTO> responseEntity = restTemplate.getForEntity(internalServiceUrl, ListDomainsDTO.class);
+        return new ModelAndView("domain_list", "domainList", Objects.requireNonNull(responseEntity.getBody()));
+	}

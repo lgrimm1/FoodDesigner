@@ -34,12 +34,15 @@ class RootControllerTest {
 
 		mockMvc
 				.perform(
-						get("/")
+						get("/api/v1/root")
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("recipe_list"))
-				.andExpect(model().size(1))
-				.andExpect(model().attribute("recipeList", rootDTO));
+				.andExpect(jsonPath("$.recipes[0].recipeId").value(rootDTO.getRecipes().get(0).recipeId()))
+				.andExpect(jsonPath("$.recipes[0].recipeName").value(rootDTO.getRecipes().get(0).recipeName()))
+				.andExpect(jsonPath("$.recipes[1].recipeId").value(rootDTO.getRecipes().get(1).recipeId()))
+				.andExpect(jsonPath("$.recipes[1].recipeName").value(rootDTO.getRecipes().get(1).recipeName()))
+				.andExpect(jsonPath("$.searchText").value(rootDTO.getSearchText()))
+				.andExpect(jsonPath("$.message").value(rootDTO.getMessage()));
 	}
 }

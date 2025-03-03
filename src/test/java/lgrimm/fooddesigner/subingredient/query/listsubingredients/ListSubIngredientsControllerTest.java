@@ -38,12 +38,15 @@ class ListSubIngredientsControllerTest {
 
 		mockMvc
 				.perform(
-						get("/subingredient/list")
+						get("/api/v1/subingredient/list")
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("subingredient_list"))
-				.andExpect(model().size(1))
-				.andExpect(model().attribute("subIngredientList", listSubIngredientsDTO));
+				.andExpect(jsonPath("$.subIngredients[0].subIngredientId").value(listSubIngredientsDTO.getSubIngredients().get(0).subIngredientId()))
+				.andExpect(jsonPath("$.subIngredients[0].subIngredientName").value(listSubIngredientsDTO.getSubIngredients().get(0).subIngredientName()))
+				.andExpect(jsonPath("$.subIngredients[1].subIngredientId").value(listSubIngredientsDTO.getSubIngredients().get(1).subIngredientId()))
+				.andExpect(jsonPath("$.subIngredients[1].subIngredientName").value(listSubIngredientsDTO.getSubIngredients().get(1).subIngredientName()))
+				.andExpect(jsonPath("$.searchText").value(listSubIngredientsDTO.getSearchText()))
+				.andExpect(jsonPath("$.message").value(listSubIngredientsDTO.getMessage()));
 	}
 }

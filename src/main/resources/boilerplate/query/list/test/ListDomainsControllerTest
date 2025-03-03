@@ -33,12 +33,15 @@ class ListDomainsControllerTest {
 
 		mockMvc
 				.perform(
-						get("/domain/list")
+						get("/api/v1/domain/list")
 				)
 				.andExpect(status().isOk())
 				.andDo(print())
-				.andExpect(view().name("domain_list"))
-				.andExpect(model().size(1))
-				.andExpect(model().attribute("domainList", listDomainsDTO));
+				.andExpect(jsonPath("$.domains[0].domainId").value(listDomainsDTO.getDomains().get(0).domainId()))
+				.andExpect(jsonPath("$.domains[0].domainName").value(listDomainsDTO.getDomains().get(0).domainName()))
+				.andExpect(jsonPath("$.domains[1].domainId").value(listDomainsDTO.getDomains().get(1).domainId()))
+				.andExpect(jsonPath("$.domains[1].domainName").value(listDomainsDTO.getDomains().get(1).domainName()))
+				.andExpect(jsonPath("$.searchText").value(listDomainsDTO.getSearchText()))
+				.andExpect(jsonPath("$.message").value(listDomainsDTO.getMessage()));
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 @RestController
+@RequestMapping("/api/v1")
 public class ListVolumesController {
 	private final ListVolumesService service;
 
@@ -15,8 +16,7 @@ public class ListVolumesController {
 	}
 
 	@GetMapping("/volume/list")
-	public ModelAndView listVolumes(Model model) {
-		model.asMap().clear();
-		return new ModelAndView("volume_list", "volumeList", service.listVolumes());
+	public ListVolumesDTO listVolumes() {
+		return service.listVolumes();
 	}
 }
